@@ -115,9 +115,7 @@ def plot_most_read_authors(df: pd.DataFrame) -> None:
     plt.text(
         8000,
         4,
-        """In 2007, there were more\n"""
-        """than 1.4 million new cases\n"""
-        """of cancer in the United States.""",
+        """Dummy text.""",
         va="top",
         fontsize=6,
     )
