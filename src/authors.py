@@ -68,7 +68,7 @@ def plot_most_read_authors(df: pd.DataFrame) -> None:
                 continue
             minor_ticks.append(base + offset)
 
-    fig = plt.figure(figsize=(3.5, 2.5))
+    fig = plt.figure(figsize=(2.5, 3.5))
     gs = fig.add_gridspec(ncols=1, nrows=1, hspace=0, wspace=0)
     ax = gs.subplots(sharex=True, sharey=True)
 
@@ -76,13 +76,13 @@ def plot_most_read_authors(df: pd.DataFrame) -> None:
     ax.set_xlim(0, 25000)
     ax.set_xticks([0, 5000, 10000, 15000, 20000, 25000])
     ax.set_xticks(minor_ticks, minor=True)
-    ax.set_xticklabels([0, 5000, 10000, 15000, 20000, 25000])
+    ax.set_xticklabels([0, "5k", "10k", "15k", "20k", "25k"])
 
     ax.xaxis.tick_top()
     ax.xaxis.set_label_position('top')
-    ax.tick_params(axis="x", which="major", length=2.5, width=0.7, labelsize=5)
+    ax.tick_params(axis="x", which="major", length=2.5, width=0.7, labelsize=4)
     ax.tick_params(axis="x", which="minor", length=2.5, width=0.2, labelsize=5)
-    ax.tick_params(axis="y", which="both", labelsize=5, length=0)
+    ax.tick_params(axis="y", which="both", labelsize=4.5, length=0)
     for tick in ax.xaxis.get_minorticklines():
         tick.set_alpha(0.3)
     for spine in ["right", "left", "top", "bottom"]:
@@ -94,8 +94,8 @@ def plot_most_read_authors(df: pd.DataFrame) -> None:
     for i in range(len(df["Author"])):
         pages_read = df["PageCount"].iloc[i]
 
-        ax.text(pages_read + 200, i, pages_read, zorder=11, size=5,
-                va="center", ha="left", weight=400)
+        ax.text(pages_read + 200, i, pages_read, zorder=11, size=4,
+                va="center", ha="left")
 
         x_pos = 1000
         while x_pos <= df["PageCount"].max():
@@ -111,10 +111,10 @@ def plot_most_read_authors(df: pd.DataFrame) -> None:
                         color="white", lw=0.7, zorder=12)
             x_pos += 5000
 
-    plt.text(0.4, 0.5, "Most Read Authors", fontsize=10, va="top",
+    plt.text(0.3, 0.5, "Most Read Authors", fontsize=10, va="top",
              transform=ax.transAxes)
     plt.text(
-        0.4, 0.42, va="top", fontsize=5.5, transform=ax.transAxes,
+        0.3, 0.44, va="top", fontsize=5.5, transform=ax.transAxes,
         s="Visualizing the most read authors\nby the amount of pages read.",
     )
 
@@ -123,4 +123,4 @@ def plot_most_read_authors(df: pd.DataFrame) -> None:
 
 if __name__ == "__main__":
     a = AuthorsAnalysis(Settings.DATABASE_PATH)
-    plot_most_read_authors(df=a.get_most_read_authors(15))
+    plot_most_read_authors(df=a.get_most_read_authors(25))
