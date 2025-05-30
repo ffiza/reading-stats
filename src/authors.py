@@ -68,11 +68,11 @@ def plot_most_read_authors(df: pd.DataFrame) -> None:
                 continue
             minor_ticks.append(base + offset)
 
-    fig = plt.figure(figsize=(4, 2.5))
+    fig = plt.figure(figsize=(3.5, 2.5))
     gs = fig.add_gridspec(ncols=1, nrows=1, hspace=0, wspace=0)
     ax = gs.subplots(sharex=True, sharey=True)
 
-    ax.set_ylim(-0.5, 9.5)
+    ax.set_ylim(-0.5, len(df) - 0.5)
     ax.set_xlim(0, 25000)
     ax.set_xticks([0, 5000, 10000, 15000, 20000, 25000])
     ax.set_xticks(minor_ticks, minor=True)
@@ -111,13 +111,11 @@ def plot_most_read_authors(df: pd.DataFrame) -> None:
                         color="white", lw=0.7, zorder=12)
             x_pos += 5000
 
-    plt.text(8000, 5, "Most Read Authors", fontsize=10, va="top")
+    plt.text(0.4, 0.5, "Most Read Authors", fontsize=10, va="top",
+             transform=ax.transAxes)
     plt.text(
-        8000,
-        4,
-        """Dummy text.""",
-        va="top",
-        fontsize=6,
+        0.4, 0.42, va="top", fontsize=5.5, transform=ax.transAxes,
+        s="Visualizing the most read authors\nby the amount of pages read.",
     )
 
     fig.savefig("images/most_read_authors.pdf", dpi=300, bbox_inches="tight")
@@ -125,4 +123,4 @@ def plot_most_read_authors(df: pd.DataFrame) -> None:
 
 if __name__ == "__main__":
     a = AuthorsAnalysis(Settings.DATABASE_PATH)
-    plot_most_read_authors(df=a.get_most_read_authors(10))
+    plot_most_read_authors(df=a.get_most_read_authors(15))
