@@ -64,7 +64,7 @@ def plot_most_read_authors(df: pd.DataFrame) -> None:
     minor_ticks = []
     for base in range(1000, 25000, 5000):
         for offset in range(0, 5000, 1000):
-            if offset == 4000:  # skip middle point (e.g. 5000, 10000, 15000, ...)
+            if offset == 4000:
                 continue
             minor_ticks.append(base + offset)
 
