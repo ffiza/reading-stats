@@ -10,5 +10,5 @@ A repository to explore some data related to my personal reading habits.
 
 <div align="center">
     <img src="https://github.com/ffiza/reading-stats/blob/main/images/authors_scores.png?raw=true" width="650">
-    <figcaption><b>Fig. 1:</b> Caption test.</figcaption>
+    <p><b>Fig. 1:</b> Caption test.</p>
 </div>
