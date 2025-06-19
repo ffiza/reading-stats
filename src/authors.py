@@ -10,9 +10,10 @@ from settings import Settings
 # font_path = r"C:\Windows\Fonts\segoeuii.ttf"
 # font_prop = fm.FontProperties(fname=font_path)
 
+DARKBLUE = "#0d1117"
 DIMGRAY = "#5f5f5f"
-LIGHTGRAY = "#919191"
-WHITE = "#ffffff"
+LIGHTGRAY = "#9198a1"
+WHITE = "#f0f6fc"
 TITLE_FONTSIZE = 5.5
 TICK_LABELS_FONTSIZE = 3.5
 FONTNAME = "Segoe UI"
@@ -94,6 +95,9 @@ def plot_most_read_authors(df: pd.DataFrame) -> None:
     gs = fig.add_gridspec(ncols=1, nrows=1, hspace=0, wspace=0)
     ax = fig.add_subplot(gs[0, 0])
 
+    fig.patch.set_facecolor(DARKBLUE)
+    ax.patch.set_facecolor(DARKBLUE)
+
     ax.set_ylim(-0.5, len(df) - 0.5)
     ax.set_yticks(positions)
     ax.set_yticklabels(df["Author"])
@@ -111,7 +115,7 @@ def plot_most_read_authors(df: pd.DataFrame) -> None:
                    labelsize=TICK_LABELS_FONTSIZE, color=LIGHTGRAY,
                    labelcolor=LIGHTGRAY)
     ax.tick_params(axis="x", which="minor", length=1, width=0.4,
-                   labelsize=TICK_LABELS_FONTSIZE, color=WHITE,
+                   labelsize=TICK_LABELS_FONTSIZE, color=DARKBLUE,
                    labelcolor=LIGHTGRAY)
     ax.tick_params(axis="y", which="both", labelsize=TICK_LABELS_FONTSIZE,
                    length=0, labelcolor=LIGHTGRAY)
@@ -125,11 +129,11 @@ def plot_most_read_authors(df: pd.DataFrame) -> None:
     ax.spines["top"].set_linewidth(0.4)
 
     ax.scatter(df["PageCount"], positions, zorder=10,
-               color=DIMGRAY, s=5, facecolor="none", linewidths=0.5)
+               color=WHITE, s=5, facecolor="none", linewidths=0.5)
 
     for i, row in df.iterrows():
         ax.text(row["PageCount"], float(i) - 0.5, row["PageCount"], zorder=11,
-                size=2.25, va="center", ha="center", color=DIMGRAY,
+                size=2.25, va="center", ha="center", color=WHITE,
                 fontname=FONTNAME)
 
     plt.text(
@@ -151,6 +155,9 @@ def plot_highest_rated_authors(df: pd.DataFrame) -> None:
     gs = fig.add_gridspec(ncols=1, nrows=1, hspace=0, wspace=0)
     ax = fig.add_subplot(gs[0, 0])
 
+    fig.patch.set_facecolor(DARKBLUE)
+    ax.patch.set_facecolor(DARKBLUE)
+
     ax.set_ylim(-0.5, len(df_filtered) - 0.5)
     ax.set_yticks(positions)
     ax.set_yticklabels(df_filtered["Author"])
@@ -169,7 +176,7 @@ def plot_highest_rated_authors(df: pd.DataFrame) -> None:
                    labelcolor=LIGHTGRAY)
     ax.tick_params(axis="x", which="minor", length=1, width=0.4,
                    labelsize=TICK_LABELS_FONTSIZE, color=WHITE,
-                   labelcolor=LIGHTGRAY)
+                   labelcolor=DARKBLUE)
     ax.tick_params(axis="y", which="both", labelsize=TICK_LABELS_FONTSIZE,
                    length=0, labelcolor=LIGHTGRAY)
 
@@ -182,12 +189,12 @@ def plot_highest_rated_authors(df: pd.DataFrame) -> None:
     ax.spines["top"].set_linewidth(0.4)
 
     ax.scatter(df_filtered["WeightedScore"], positions, zorder=10,
-               color=DIMGRAY, s=5, facecolor="none", linewidths=0.5)
+               color=WHITE, s=5, facecolor="none", linewidths=0.5)
 
     for i, score in enumerate(df_filtered["WeightedScore"]):
         ax.text(score, i - 0.5,
                 str(round(score, 2)).ljust(4, "0"),
-                zorder=11, size=2.25, va="center", ha="center", color=DIMGRAY,
+                zorder=11, size=2.25, va="center", ha="center", color=WHITE,
                 fontname=FONTNAME,)
 
     plt.text(
