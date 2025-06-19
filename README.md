@@ -1,6 +1,6 @@
 # Reading Stats
 
-A repository to explore some data related to my personal reading habits.
+A repository for exploring data related to my personal reading habits. All data is stored in a relational database located at `data/raw/books.db`. Scripts for querying, data processing, and plotting can be found in the `src/` directory.
 
 ## Authors
 
