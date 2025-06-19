@@ -10,11 +10,5 @@ A repository to explore some data related to my personal reading habits.
 
 <div align="center">
     <img src="https://github.com/ffiza/reading-stats/blob/main/images/authors_scores.png?raw=true" width="650">
-</div>
-
-<figure>
-	<center>
-    <img src="https://ichef.bbci.co.uk/images/ic/1024x576/p0kn0tcp.jpg.webp" />
     <figcaption><b>Fig. 1:</b> Caption test.</figcaption>
-    </center>
-</figure>
+</div>
