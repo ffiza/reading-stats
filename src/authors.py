@@ -3,15 +3,10 @@ import numpy as np
 import pandas as pd
 from typing import List
 import matplotlib.pyplot as plt
-import matplotlib.font_manager as fm
 
 from settings import Settings
 
-# font_path = r"C:\Windows\Fonts\segoeuii.ttf"
-# font_prop = fm.FontProperties(fname=font_path)
-
 DARKBLUE = "#0d1117"
-DIMGRAY = "#5f5f5f"
 LIGHTGRAY = "#9198a1"
 WHITE = "#f0f6fc"
 TITLE_FONTSIZE = 5.5
@@ -77,7 +72,8 @@ class AuthorsAnalysis:
                 "WeightedStd": weighted_std
             })
 
-        g = df_finished.groupby("Author").apply(compute_stats).reset_index()
+        g = df_finished.groupby("Author", group_keys=False).apply(
+            compute_stats, include_groups=False).reset_index()
         g = g[g["TotalPages"] >= min_pages_read]
         g = g.sort_values("WeightedScore", ascending=False)
         g.min_pages_read = min_pages_read
@@ -175,8 +171,8 @@ def plot_highest_rated_authors(df: pd.DataFrame) -> None:
                    labelsize=TICK_LABELS_FONTSIZE, color=LIGHTGRAY,
                    labelcolor=LIGHTGRAY)
     ax.tick_params(axis="x", which="minor", length=1, width=0.4,
-                   labelsize=TICK_LABELS_FONTSIZE, color=WHITE,
-                   labelcolor=DARKBLUE)
+                   labelsize=TICK_LABELS_FONTSIZE, color=DARKBLUE,
+                   labelcolor=LIGHTGRAY)
     ax.tick_params(axis="y", which="both", labelsize=TICK_LABELS_FONTSIZE,
                    length=0, labelcolor=LIGHTGRAY)
 
