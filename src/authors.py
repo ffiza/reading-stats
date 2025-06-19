@@ -197,7 +197,7 @@ def plot_highest_rated_authors(df: pd.DataFrame) -> None:
         fontname=FONTNAME,
     )
 
-    fig.savefig("images/highest_rated_authors.png",
+    fig.savefig("images/authors_scores.png",
                 dpi=500, bbox_inches="tight")
 
 
