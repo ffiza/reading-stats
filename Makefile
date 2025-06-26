@@ -12,3 +12,4 @@ create-environment:
 
 create-plots:
 	python .\src\authors.py
+	python .\src\works.py
