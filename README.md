@@ -13,3 +13,15 @@ A repository for exploring data related to my personal reading habits. All data 
     <img src="https://github.com/ffiza/reading-stats/blob/main/images/authors_scores.png?raw=true" width="650">
     <p><b>Fig. 2:</b> Average scores of authors with 1500 or more pages read.</p>
 </div>
+
+## Works
+
+<div align="center">
+    <img src="https://github.com/ffiza/reading-stats/blob/main/images/highest_rated_novels.png?raw=true" width="650">
+    <p><b>Fig. 3:</b>Highest rated novels.</p>
+</div>
+
+<div align="center">
+    <img src="https://github.com/ffiza/reading-stats/blob/main/images/highest_rated_short_stories.png?raw=true" width="650">
+    <p><b>Fig. 4:</b> Highest rated short stories.</p>
+</div>
