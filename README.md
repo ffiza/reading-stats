@@ -18,7 +18,7 @@ A repository for exploring data related to my personal reading habits. All data 
 
 <div align="center">
     <img src="https://github.com/ffiza/reading-stats/blob/main/images/highest_rated_novels.png?raw=true" width="650">
-    <p><b>Fig. 3:</b>Highest rated novels.</p>
+    <p><b>Fig. 3:</b> Highest rated novels.</p>
 </div>
 
 <div align="center">
