@@ -124,7 +124,7 @@ def plot_most_read_authors(df: pd.DataFrame) -> None:
                color=DARKGRAY, s=5, facecolor="none", linewidths=0.5)
 
     for i, row in df.iterrows():
-        ax.text(row["PageCount"], float(i) - 0.5, row["PageCount"], zorder=11,
+        ax.text(row["PageCount"], i - 0.5, row["PageCount"], zorder=11,
                 size=2.25, va="center", ha="center", color=DARKGRAY,
                 fontname=FONTNAME)
 
