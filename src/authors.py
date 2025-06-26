@@ -4,10 +4,9 @@ import pandas as pd
 from typing import List
 import matplotlib.pyplot as plt
 
+from colors import Colors
 from settings import Settings
 
-WHITE = "#ffffff"
-DARKGRAY = "#1f2328"
 TITLE_FONTSIZE = 5.5
 TICK_LABELS_FONTSIZE = 3.5
 FONTNAME = "Segoe UI"
@@ -104,33 +103,33 @@ def plot_most_read_authors(df: pd.DataFrame) -> None:
     ax.xaxis.set_label_position('top')
 
     ax.tick_params(axis="x", which="major", length=1, width=0.4,
-                   labelsize=TICK_LABELS_FONTSIZE, color=DARKGRAY,
-                   labelcolor=DARKGRAY)
+                   labelsize=TICK_LABELS_FONTSIZE, color=Colors.DARKGRAY,
+                   labelcolor=Colors.DARKGRAY)
     ax.tick_params(axis="x", which="minor", length=1, width=0.4,
-                   labelsize=TICK_LABELS_FONTSIZE, color=WHITE,
-                   labelcolor=DARKGRAY)
+                   labelsize=TICK_LABELS_FONTSIZE, color=Colors.WHITE,
+                   labelcolor=Colors.DARKGRAY)
     ax.tick_params(axis="y", which="both", labelsize=TICK_LABELS_FONTSIZE,
-                   length=0, labelcolor=DARKGRAY)
+                   length=0, labelcolor=Colors.DARKGRAY)
 
     for tick in ax.get_yticklabels():
         tick.set_fontname(FONTNAME)
 
     for spine in ["right", "left", "bottom"]:
         ax.spines[spine].set_visible(False)
-    ax.spines["top"].set_color(DARKGRAY)
+    ax.spines["top"].set_color(Colors.DARKGRAY)
     ax.spines["top"].set_linewidth(0.4)
 
     ax.scatter(df["PageCount"], positions, zorder=10,
-               color=DARKGRAY, s=5, facecolor="none", linewidths=0.5)
+               color=Colors.DARKGRAY, s=5, facecolor="none", linewidths=0.5)
 
     for i, row in df.iterrows():
         ax.text(row["PageCount"], i - 0.5, row["PageCount"], zorder=11,
-                size=2.25, va="center", ha="center", color=DARKGRAY,
+                size=2.25, va="center", ha="center", color=Colors.DARKGRAY,
                 fontname=FONTNAME)
 
     plt.text(
         -0.4, 1.15, va="bottom", ha="left", fontsize=TITLE_FONTSIZE,
-        transform=ax.transAxes, color=DARKGRAY,
+        transform=ax.transAxes, color=Colors.DARKGRAY,
         s=f"Top {len(df)} Most Read Authors by Page Count",
         fontname=FONTNAME,
     )
@@ -161,34 +160,34 @@ def plot_highest_rated_authors(df: pd.DataFrame) -> None:
     ax.xaxis.set_label_position('top')
 
     ax.tick_params(axis="x", which="major", length=1, width=0.4,
-                   labelsize=TICK_LABELS_FONTSIZE, color=DARKGRAY,
-                   labelcolor=DARKGRAY)
+                   labelsize=TICK_LABELS_FONTSIZE, color=Colors.DARKGRAY,
+                   labelcolor=Colors.DARKGRAY)
     ax.tick_params(axis="x", which="minor", length=1, width=0.4,
-                   labelsize=TICK_LABELS_FONTSIZE, color=WHITE,
-                   labelcolor=DARKGRAY)
+                   labelsize=TICK_LABELS_FONTSIZE, color=Colors.WHITE,
+                   labelcolor=Colors.DARKGRAY)
     ax.tick_params(axis="y", which="both", labelsize=TICK_LABELS_FONTSIZE,
-                   length=0, labelcolor=DARKGRAY)
+                   length=0, labelcolor=Colors.DARKGRAY)
 
     for tick in ax.get_yticklabels():
         tick.set_fontname(FONTNAME)
 
     for spine in ["right", "left", "bottom"]:
         ax.spines[spine].set_visible(False)
-    ax.spines["top"].set_color(DARKGRAY)
+    ax.spines["top"].set_color(Colors.DARKGRAY)
     ax.spines["top"].set_linewidth(0.4)
 
     ax.scatter(df_filtered["WeightedScore"], positions, zorder=10,
-               color=DARKGRAY, s=5, facecolor="none", linewidths=0.5)
+               color=Colors.DARKGRAY, s=5, facecolor="none", linewidths=0.5)
 
     for i, score in enumerate(df_filtered["WeightedScore"]):
         ax.text(score, i - 0.5,
                 str(round(score, 2)).ljust(4, "0"),
-                zorder=11, size=2.25, va="center", ha="center", color=DARKGRAY,
+                zorder=11, size=2.25, va="center", ha="center", color=Colors.DARKGRAY,
                 fontname=FONTNAME,)
 
     plt.text(
         -0.4, 1.15, va="bottom", ha="left", fontsize=TITLE_FONTSIZE,
-        transform=ax.transAxes, color=DARKGRAY,
+        transform=ax.transAxes, color=Colors.DARKGRAY,
         s=f"Scores of Authors with {df.min_pages_read}+ Pages Read",
         fontname=FONTNAME,
     )
