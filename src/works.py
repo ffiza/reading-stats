@@ -7,10 +7,9 @@ import matplotlib.pyplot as plt
 from settings import Settings
 from colors import Colors
 
-
 TITLE_FONTSIZE = 5.5
 TICK_LABELS_FONTSIZE = 3.5
-FONTNAME = "Segoe UI"
+
 QUERY = """
     SELECT
         R.WorkID,
@@ -73,23 +72,26 @@ class WorksAnalysis:
             j = N_WORKS - i
             ax.scatter(0, i, s=20, color=Colors.DARKGRAY, zorder=20)
             ax.text(x=0, y=i + TEXT_OFFSET, s=str(j), ha="center", va="center",
-                    color=Colors.WHITE, size=3, weight=600, zorder=21)
+                    color=Colors.WHITE, size=3, weight=600, zorder=21,
+                    fontname=Settings.FONTNAME,)
             name = df.loc[j]['Name'].replace(' ', '\\ ').replace(
                 "-", r"\text{-}")
             year = df.loc[j]['PublishedOn']
             ax.text(x=0.4, y=i + TEXT_OFFSET, s=f"$\\bf{{{name}}}$ ({year})",
-                    ha="left", va="center", color=Colors.DARKGRAY, size=4)
+                    ha="left", va="center", color=Colors.DARKGRAY, size=4,
+                    fontname=Settings.FONTNAME,)
             authors = self.get_work_authors_list(str(df.loc[j]['Name']))
             authors_text = " & ".join(authors)
             ax.text(x=0.4, y=i - 0.4, s=authors_text, style='italic',
-                    ha="left", va="center", color=Colors.DARKGRAY, size=3.5)
+                    ha="left", va="center", color=Colors.DARKGRAY, size=3.5,
+                    fontname=Settings.FONTNAME,)
 
         plt.text(
             0, 1.02, va="bottom", ha="left", fontsize=TITLE_FONTSIZE,
             transform=ax.transAxes, color=Colors.DARKGRAY,
             s=f"Top {N_WORKS} Highest Rated "
               f"{Settings.PLURAL_WORK_NAME[work_type]}",
-            fontname=FONTNAME,
+            fontname=Settings.FONTNAME,
         )
 
         fig.savefig(

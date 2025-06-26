@@ -1,6 +1,6 @@
 class Settings:
     DATABASE_PATH = "data/raw/books.db"
-
+    FONTNAME = "Segoe UI"
     PLURAL_WORK_NAME: dict = {
         "Novel": "Novels",
         "Short Story": "Short Stories",

@@ -9,7 +9,6 @@ from settings import Settings
 
 TITLE_FONTSIZE = 5.5
 TICK_LABELS_FONTSIZE = 3.5
-FONTNAME = "Segoe UI"
 QUERY = """
     SELECT
         R.WorkID,
@@ -95,9 +94,9 @@ def plot_most_read_authors(df: pd.DataFrame) -> None:
     ax.set_xlim(0, 25000)
     ax.set_xticks([0, 25000])
     ax.set_xticks([5000, 10000, 15000, 20000], minor=True)
-    ax.set_xticklabels(["0", "25k"], fontdict={"fontname": FONTNAME})
+    ax.set_xticklabels(["0", "25k"], fontdict={"fontname": Settings.FONTNAME})
     ax.set_xticklabels(["5k", "10k", "15k", "20k"], minor=True,
-                       fontdict={"fontname": FONTNAME})
+                       fontdict={"fontname": Settings.FONTNAME})
 
     ax.xaxis.tick_top()
     ax.xaxis.set_label_position('top')
@@ -112,7 +111,7 @@ def plot_most_read_authors(df: pd.DataFrame) -> None:
                    length=0, labelcolor=Colors.DARKGRAY)
 
     for tick in ax.get_yticklabels():
-        tick.set_fontname(FONTNAME)
+        tick.set_fontname(Settings.FONTNAME)
 
     for spine in ["right", "left", "bottom"]:
         ax.spines[spine].set_visible(False)
@@ -125,13 +124,13 @@ def plot_most_read_authors(df: pd.DataFrame) -> None:
     for i, row in df.iterrows():
         ax.text(row["PageCount"], i - 0.5, row["PageCount"], zorder=11,
                 size=2.25, va="center", ha="center", color=Colors.DARKGRAY,
-                fontname=FONTNAME)
+                fontname=Settings.FONTNAME)
 
     plt.text(
         -0.4, 1.15, va="bottom", ha="left", fontsize=TITLE_FONTSIZE,
         transform=ax.transAxes, color=Colors.DARKGRAY,
         s=f"Top {len(df)} Most Read Authors by Page Count",
-        fontname=FONTNAME,
+        fontname=Settings.FONTNAME,
     )
 
     fig.savefig("images/most_read_authors.png", dpi=500, bbox_inches="tight")
@@ -152,9 +151,9 @@ def plot_highest_rated_authors(df: pd.DataFrame) -> None:
     ax.set_xlim(0, 5)
     ax.set_xticks([0, 5])
     ax.set_xticks([1, 2, 3, 4], minor=True)
-    ax.set_xticklabels(["0", "5"], fontdict={"fontname": FONTNAME})
+    ax.set_xticklabels(["0", "5"], fontdict={"fontname": Settings.FONTNAME})
     ax.set_xticklabels(["1", "2", "3", "4"], minor=True,
-                       fontdict={"fontname": FONTNAME})
+                       fontdict={"fontname": Settings.FONTNAME})
 
     ax.xaxis.tick_top()
     ax.xaxis.set_label_position('top')
@@ -169,7 +168,7 @@ def plot_highest_rated_authors(df: pd.DataFrame) -> None:
                    length=0, labelcolor=Colors.DARKGRAY)
 
     for tick in ax.get_yticklabels():
-        tick.set_fontname(FONTNAME)
+        tick.set_fontname(Settings.FONTNAME)
 
     for spine in ["right", "left", "bottom"]:
         ax.spines[spine].set_visible(False)
@@ -182,14 +181,14 @@ def plot_highest_rated_authors(df: pd.DataFrame) -> None:
     for i, score in enumerate(df_filtered["WeightedScore"]):
         ax.text(score, i - 0.5,
                 str(round(score, 2)).ljust(4, "0"),
-                zorder=11, size=2.25, va="center", ha="center", color=Colors.DARKGRAY,
-                fontname=FONTNAME,)
+                zorder=11, size=2.25, va="center", ha="center",
+                color=Colors.DARKGRAY, fontname=Settings.FONTNAME,)
 
     plt.text(
         -0.4, 1.15, va="bottom", ha="left", fontsize=TITLE_FONTSIZE,
         transform=ax.transAxes, color=Colors.DARKGRAY,
         s=f"Scores of Authors with {df.min_pages_read}+ Pages Read",
-        fontname=FONTNAME,
+        fontname=Settings.FONTNAME,
     )
 
     fig.savefig("images/authors_scores.png",
