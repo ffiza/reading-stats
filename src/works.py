@@ -7,9 +7,6 @@ import matplotlib.pyplot as plt
 from settings import Settings
 from colors import Colors
 
-TITLE_FONTSIZE = 5.5
-TICK_LABELS_FONTSIZE = 3.5
-
 QUERY = """
     SELECT
         R.WorkID,
@@ -87,7 +84,7 @@ class WorksAnalysis:
                     fontname=Settings.FONTNAME,)
 
         plt.text(
-            0, 1.02, va="bottom", ha="left", fontsize=TITLE_FONTSIZE,
+            0, 1.02, va="bottom", ha="left", fontsize=Settings.TITLE_FONTSIZE,
             transform=ax.transAxes, color=Colors.DARKGRAY,
             s=f"Top {N_WORKS} Highest Rated "
               f"{Settings.PLURAL_WORK_NAME[work_type]}",

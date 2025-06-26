@@ -7,8 +7,6 @@ import matplotlib.pyplot as plt
 from colors import Colors
 from settings import Settings
 
-TITLE_FONTSIZE = 5.5
-TICK_LABELS_FONTSIZE = 3.5
 QUERY = """
     SELECT
         R.WorkID,
@@ -102,12 +100,13 @@ def plot_most_read_authors(df: pd.DataFrame) -> None:
     ax.xaxis.set_label_position('top')
 
     ax.tick_params(axis="x", which="major", length=1, width=0.4,
-                   labelsize=TICK_LABELS_FONTSIZE, color=Colors.DARKGRAY,
-                   labelcolor=Colors.DARKGRAY)
+                   labelsize=Settings.TICK_LABELS_FONTSIZE,
+                   color=Colors.DARKGRAY, labelcolor=Colors.DARKGRAY)
     ax.tick_params(axis="x", which="minor", length=1, width=0.4,
-                   labelsize=TICK_LABELS_FONTSIZE, color=Colors.WHITE,
+                   labelsize=Settings.TICK_LABELS_FONTSIZE, color=Colors.WHITE,
                    labelcolor=Colors.DARKGRAY)
-    ax.tick_params(axis="y", which="both", labelsize=TICK_LABELS_FONTSIZE,
+    ax.tick_params(axis="y", which="both",
+                   labelsize=Settings.TICK_LABELS_FONTSIZE,
                    length=0, labelcolor=Colors.DARKGRAY)
 
     for tick in ax.get_yticklabels():
@@ -127,7 +126,7 @@ def plot_most_read_authors(df: pd.DataFrame) -> None:
                 fontname=Settings.FONTNAME)
 
     plt.text(
-        -0.4, 1.15, va="bottom", ha="left", fontsize=TITLE_FONTSIZE,
+        -0.4, 1.15, va="bottom", ha="left", fontsize=Settings.TITLE_FONTSIZE,
         transform=ax.transAxes, color=Colors.DARKGRAY,
         s=f"Top {len(df)} Most Read Authors by Page Count",
         fontname=Settings.FONTNAME,
@@ -159,12 +158,13 @@ def plot_highest_rated_authors(df: pd.DataFrame) -> None:
     ax.xaxis.set_label_position('top')
 
     ax.tick_params(axis="x", which="major", length=1, width=0.4,
-                   labelsize=TICK_LABELS_FONTSIZE, color=Colors.DARKGRAY,
-                   labelcolor=Colors.DARKGRAY)
+                   labelsize=Settings.TICK_LABELS_FONTSIZE,
+                   color=Colors.DARKGRAY, labelcolor=Colors.DARKGRAY)
     ax.tick_params(axis="x", which="minor", length=1, width=0.4,
-                   labelsize=TICK_LABELS_FONTSIZE, color=Colors.WHITE,
+                   labelsize=Settings.TICK_LABELS_FONTSIZE, color=Colors.WHITE,
                    labelcolor=Colors.DARKGRAY)
-    ax.tick_params(axis="y", which="both", labelsize=TICK_LABELS_FONTSIZE,
+    ax.tick_params(axis="y", which="both",
+                   labelsize=Settings.TICK_LABELS_FONTSIZE,
                    length=0, labelcolor=Colors.DARKGRAY)
 
     for tick in ax.get_yticklabels():
@@ -185,7 +185,7 @@ def plot_highest_rated_authors(df: pd.DataFrame) -> None:
                 color=Colors.DARKGRAY, fontname=Settings.FONTNAME,)
 
     plt.text(
-        -0.4, 1.15, va="bottom", ha="left", fontsize=TITLE_FONTSIZE,
+        -0.4, 1.15, va="bottom", ha="left", fontsize=Settings.TITLE_FONTSIZE,
         transform=ax.transAxes, color=Colors.DARKGRAY,
         s=f"Scores of Authors with {df.min_pages_read}+ Pages Read",
         fontname=Settings.FONTNAME,
