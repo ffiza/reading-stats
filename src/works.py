@@ -102,3 +102,4 @@ if __name__ == "__main__":
     a = WorksAnalysis(Settings.DATABASE_PATH)
     a.plot_highest_rated_works(work_type="Novel")
     a.plot_highest_rated_works(work_type="Short Story")
+    a.plot_highest_rated_works(work_type="Novelette")
