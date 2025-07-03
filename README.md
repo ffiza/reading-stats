@@ -1,4 +1,6 @@
-# Reading Stats
+<div align="center">
+    <h1>Reading Stats</h1>
+</div>
 
 A repository for exploring data related to my personal reading habits. All data is stored in a relational database located at `data/raw/books.db`. Scripts for querying, data processing, and plotting can be found in the `src/` directory.
 
