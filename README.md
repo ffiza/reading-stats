@@ -29,3 +29,10 @@ A repository for exploring data related to my personal reading habits. All data 
     <img src="https://github.com/ffiza/reading-stats/blob/main/images/highest_rated_short_stories.png?raw=true" width="650">
     <p><b>Fig. 4:</b> Highest rated short stories.</p>
 </div>
+
+---
+
+<div align="center">
+    <img src="https://github.com/ffiza/reading-stats/blob/main/images/highest_rated_novelettes.png?raw=true" width="650">
+    <p><b>Fig. 5:</b> Highest rated novelettes.</p>
+</div>
