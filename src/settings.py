@@ -13,4 +13,3 @@ class Settings:
         "Anthology": "Anthologies",
         "Poetry": "Poems",
     }
-    FLAG_DIR = "assets/flags/"

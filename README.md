@@ -41,7 +41,7 @@ The database consists of four tables, as described below. Missing values are rep
 ---
 
 <div align="center">
-    <img src="https://github.com/ffiza/reading-stats/blob/main/images/authors_scores.png?raw=true" width="650">
+    <img src="https://github.com/ffiza/reading-stats/blob/main/images/highest_rated_authors.png?raw=true" width="650">
 </div>
 
 ---
