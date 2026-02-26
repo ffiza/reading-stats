@@ -13,7 +13,7 @@ QUERY = """
         W.Name,
         W.PublishedOn,
         R.Score,
-        W.Type,
+        W.WorkType,
         A.Name AS Author
     FROM READS R
     JOIN WORKS W ON R.WorkID = W.WorkID
@@ -31,7 +31,7 @@ class WorksAnalysis:
         conn.close()
 
         self.df["PublishedOn"] = self.df["PublishedOn"].astype(np.uint16)
-        self.df["Type"] = self.df["Type"].astype("category")
+        self.df["WorkType"] = self.df["WorkType"].astype("category")
         self.df = self.df.sort_values(
             by="Score", ascending=False).reset_index()
 
@@ -50,7 +50,7 @@ class WorksAnalysis:
         N_WORKS: int = 20
         SEPARATION: float = 0.5
         df = self.get_unique_works()
-        df = df[df["Type"] == work_type]
+        df = df[df["WorkType"] == work_type]
         df = df.reset_index()
 
         fig = plt.figure(figsize=(1.8, 2.5))
