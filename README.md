@@ -18,7 +18,7 @@ The database consists of four tables, as described below. Missing values are rep
     - `WorkID`: An integer serving as a unique identifier for the work.
     - `Name`: The name of the work as a string.
     - `PublishedOn`: The year of publication in `YYYY` format.
-    - `Type`: The type of work. Possible values include `Novella`, `Short Story`, `Novel`, `Novelette`, `Non-Fiction`, `Anthology`, `Graphic Novel`, or `Poetry`. Most works are classified based on [The Internet Speculative Fiction Database](https://www.isfdb.org/).
+    - `WorkType`: The type of work. Possible values include `Novella`, `Short Story`, `Novel`, `Novelette`, `Non-Fiction`, `Anthology`, `Graphic Novel`, or `Poetry`. Most works are classified based on [The Internet Speculative Fiction Database](https://www.isfdb.org/).
     - `Genre`: The (subjective) genre of the work. For example: `Fiction: Horror: Cosmic`.
     - `Series`: The series to which the work belongs.
     - `NumberInSeries`: The order of the work within its series, as a float.
