@@ -1,0 +1,1 @@
+* [ ] Add `StartedOn`, `FinishedOn` and `Status` to `V_READ_HISTORY`.
