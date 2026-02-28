@@ -1,7 +1,4 @@
-import sqlite3
-import numpy as np
 import pandas as pd
-from typing import List
 import matplotlib.pyplot as plt
 
 from colors import Colors
