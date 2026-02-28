@@ -1,105 +1,106 @@
-import sqlite3
-import numpy as np
 import pandas as pd
-from typing import List
 import matplotlib.pyplot as plt
 
 from settings import Settings
 from colors import Colors
 
-QUERY = """
-    SELECT
-        R.WorkID,
-        W.Name,
-        W.PublishedOn,
-        R.Score,
-        W.WorkType,
-        A.Name AS Author
-    FROM READS R
-    JOIN WORKS W ON R.WorkID = W.WorkID
-    JOIN AUTHOR_WORK AW ON R.WorkID = AW.WorkID
-    JOIN AUTHORS A ON AW.AuthorID = A.AuthorID
-    WHERE R.Status = "FINISHED"
-    """
+
+def _pick_row(group):
+    times_read = len(group)
+
+    if group["ReadDate"].notna().any():
+        row = group.loc[group["ReadDate"].idxmax()]
+    else:
+        row = group.loc[group["ReadScore"].idxmax()]
+
+    row = row.copy()
+    row["TimesRead"] = times_read
+    return row
 
 
-class WorksAnalysis:
-    def __init__(self, database_path: str):
-        conn = sqlite3.connect(database_path)
-        self.authors = pd.read_sql("SELECT * FROM AUTHORS", conn)
-        self.df = pd.read_sql(QUERY, conn)
-        conn.close()
+def export_top_works() -> None:
+    df = pd.read_csv("data/processed/read_history.csv")
+    df = df[df["ReadStatus"] == "FINISHED"].copy()
+    df["ReadScore"] = pd.to_numeric(df["ReadScore"], errors="coerce")
+    df["StartDate"] = pd.to_datetime(df["StartDate"], errors="coerce")
+    df["FinishDate"] = pd.to_datetime(df["FinishDate"], errors="coerce")
+    df["ReadDate"] = df["FinishDate"].combine_first(df["StartDate"])
 
-        self.df["PublishedOn"] = self.df["PublishedOn"].astype(np.uint16)
-        self.df["WorkType"] = self.df["WorkType"].astype("category")
-        self.df = self.df.sort_values(
-            by="Score", ascending=False).reset_index()
+    result = df.groupby(
+        "WorkID", group_keys=False).apply(
+            _pick_row).sort_values("ReadScore", ascending=False)
 
-    def get_unique_works(self) -> pd.DataFrame:
-        df = self.df.drop_duplicates(subset=["Name"]).reset_index()
-        df = df.drop(columns=["level_0", "index"])
-        return df
+    result.drop(columns=["ReadStatus", "AuthorID", "StartDate",
+                         "FinishDate", "ReadDate"], inplace=True)
+    result.to_csv("data/results/top_works.csv", index=False)
 
-    def get_work_authors_list(self, title: str) -> List[str]:
-        if title not in self.df["Name"].unique():
-            print(f"Title `{title}` not found in database.")
-            return []
-        return list(self.df[self.df["Name"] == title]["Author"].unique())
 
-    def plot_highest_rated_works(self, work_type: str) -> None:
-        N_WORKS: int = 20
-        SEPARATION: float = 0.5
-        df = self.get_unique_works()
-        df = df[df["WorkType"] == work_type]
-        df = df.reset_index()
+def plot_works_score_scatter(df: pd.DataFrame) -> None:
+    fig = plt.figure(figsize=(7, 5))
+    gs = fig.add_gridspec(ncols=1, nrows=1, hspace=0, wspace=0)
+    ax = fig.add_subplot(gs[0, 0])
 
-        fig = plt.figure(figsize=(1.8, 2.5))
-        gs = fig.add_gridspec(ncols=1, nrows=1, hspace=0, wspace=0)
-        ax = fig.add_subplot(gs[0, 0])
+    fig.patch.set_facecolor(Colors.LIGHTGRAY)
+    ax.set_facecolor(Colors.LIGHTGRAY)
 
-        ax.set_ylim(-0.6, 29.1)
-        ax.set_yticks([])
-        ax.set_xlim(-0.25, 5)
-        ax.set_xticks([])
-        plt.gca().invert_yaxis()
+    ax.set_xlim(0.95, 5.05)
+    ax.set_ylim(0.95, 5.05)
+    ax.set_xticks([1, 2, 3, 4, 5])
+    ax.set_yticks([1, 2, 3, 4, 5])
+    ax.set_xlabel("My Score", fontsize=9,
+                  fontname=Settings.FONTNAME, color=Colors.DARKGRAY)
+    ax.set_ylabel("Goodreads Score", rotation=0, fontsize=9,
+                  fontname=Settings.FONTNAME, color=Colors.DARKGRAY)
+    ax.yaxis.set_label_coords(0.05, 1.02)
+    ax.tick_params(axis='y', length=0, labelsize=9)
+    ax.tick_params(axis='x', length=0, labelsize=9)
+    ax.grid(visible=True, color=Colors.DARKGRAY, alpha=0.3,
+            linestyle=(0, (5, 4)), linewidth=0.5)
 
-        for spine in ["right", "left", "bottom", "top"]:
-            ax.spines[spine].set_visible(False)
+    for label in ax.get_yticklabels():
+        label.set_fontname(Settings.FONTNAME)
 
-        for i in range(N_WORKS):
-            ax.annotate(
-                str(i + 1), xy=(0.02, i + SEPARATION * i),
-                ha="center", va="center", color=Colors.DARKGRAY,
-                size=4, weight=800, zorder=21, fontname=Settings.FONTNAME)
-            name = df.loc[i]['Name'].replace(' ', '\\ ').replace(
-                "-", r"\text{-}")
-            year = df.loc[i]['PublishedOn']
-            ax.text(x=0.2, y=i + SEPARATION * i,
-                    s=f"$\\bf{{{name}}}$ ({year})",
-                    ha="left", va="bottom", color=Colors.DARKGRAY, size=3.5,
-                    fontname=Settings.FONTNAME,)
-            authors = self.get_work_authors_list(str(df.loc[i]['Name']))
-            authors_text = " & ".join(authors)
-            ax.text(x=0.2, y=i + SEPARATION * i, s=authors_text,
-                    style='italic', fontname=Settings.FONTNAME,
-                    ha="left", va="top", color=Colors.DARKGRAY, size=3)
+    for label in ax.get_xticklabels():
+        label.set_fontname(Settings.FONTNAME)
 
-        plt.text(
-            0.02, 1.06, va="bottom", ha="left", fontsize=6,
-            transform=ax.transAxes, color=Colors.DARKGRAY,
-            s=f"Top 20 Highest Rated {Settings.PLURAL_WORK_NAME[work_type]}",
-            fontname=Settings.FONTNAME, weight=800,
-        )
+    for spine in ["right", "top"]:
+        ax.spines[spine].set_visible(False)
 
-        plt.subplots_adjust(left=0, right=1, bottom=0)
-        fig.savefig(
-            "images/highest_rated_"
-            f"{Settings.PLURAL_WORK_NAME[work_type].lower().replace(' ', '_')}"
-            ".png", dpi=500)
+    plt.text(
+        -0.05, 1.14, va="bottom", ha="left", fontsize=14,
+        transform=ax.transAxes, color=Colors.DARKGRAY,
+        s=f"Score comparison: How do my score compare to Goodreads scores?",
+        fontname=Settings.FONTNAME, weight=800)
+    plt.text(
+        -0.05, 1.09, va="bottom", ha="left", fontsize=10,
+        transform=ax.transAxes, color=Colors.DARKGRAY,
+        s="This shows how my scores compare to Goodreads scores "
+          "for all work types in the database.",
+        fontname=Settings.FONTNAME)
+    plt.text(
+        -0.05, -0.2, s="Source:", fontweight="bold", fontsize=8,
+        transform=ax.transAxes, color=Colors.DARKGRAY,
+        fontname=Settings.FONTNAME, va="bottom", ha="left")
+    plt.text(
+        0.03, -0.2, s=" https://github.com/ffiza/reading-stats",
+        fontsize=8, transform=ax.transAxes, color=Colors.DARKGRAY,
+        fontname=Settings.FONTNAME, va="bottom", ha="left")
+
+    for work_type in ["Novel", "Short Story", "Novella", "Novelette"]:
+        df_work_type = df[df["WorkType"] == work_type]
+        ax.scatter(df_work_type["ReadScore"], df_work_type["GoodreadsScore"],
+                   s=10, color=Colors.COLOR_MAPPING[work_type],
+                   label=Settings.PLURAL_WORK_NAME[work_type])
+
+    ax.legend(loc="lower left", frameon=False,
+              prop={"family": Settings.FONTNAME, "size": 9})
+
+    fig.tight_layout()
+    ax.set_position((0.05, 0.15, 0.9, 0.7))
+    fig.savefig("images/work_score_scatter.png", dpi=1000)
 
 
 if __name__ == "__main__":
-    a = WorksAnalysis(Settings.DATABASE_PATH)
-    a.plot_highest_rated_works(work_type="Novel")
-    a.plot_highest_rated_works(work_type="Short Story")
-    a.plot_highest_rated_works(work_type="Novelette")
+    export_top_works()
+    df = pd.read_csv("data/results/top_works.csv")
+    plot_works_score_scatter(df)
