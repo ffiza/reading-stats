@@ -50,7 +50,7 @@ The database consists of four tables, as described below. Missing values are rep
 ---
 
 <div align="center">
-    <img src="https://github.com/ffiza/reading-stats/blob/main/images/top_works.png?raw=true" width="800">
+    <img src="https://github.com/ffiza/reading-stats/blob/main/images/work_score_scatter.png?raw=true" width="800">
 </div>
 
 ## Genres
