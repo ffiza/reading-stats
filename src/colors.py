@@ -10,3 +10,10 @@ class Colors:
     ORANGE = "#ea8b7b"
     RED = "#a05961"
     CYAN = "#60bbc8"
+
+    COLOR_MAPPING = {
+        "Novel": BLUE,
+        "Short Story": GREEN,
+        "Novella": ORANGE,
+        "Novelette": PURPLE,
+    }
