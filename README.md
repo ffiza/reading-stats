@@ -50,19 +50,7 @@ The database consists of four tables, as described below. Missing values are rep
 ---
 
 <div align="center">
-    <img src="https://github.com/ffiza/reading-stats/blob/main/images/highest_rated_novels.png?raw=true" width="800">
-</div>
-
----
-
-<div align="center">
-    <img src="https://github.com/ffiza/reading-stats/blob/main/images/highest_rated_short_stories.png?raw=true" width="800">
-</div>
-
----
-
-<div align="center">
-    <img src="https://github.com/ffiza/reading-stats/blob/main/images/highest_rated_novelettes.png?raw=true" width="800">
+    <img src="https://github.com/ffiza/reading-stats/blob/main/images/top_works.png?raw=true" width="800">
 </div>
 
 ## Genres
