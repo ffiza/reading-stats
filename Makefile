@@ -6,8 +6,8 @@ SHELL := /bin/bash
 all: update-repo
 
 create-plots:
+	python ./src/read_history.py
 	python ./src/authors.py
-	python ./src/works.py
 
 update-repo:
 	python ./src/authors.py
