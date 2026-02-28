@@ -32,7 +32,7 @@ The database consists of four tables, as described below. Missing values are rep
     - `StartDate`: The start date of the reading, in `YYYY-MM-DD` format.
     - `FinishDate`: The finish date of the reading, in `YYYY-MM-DD` format.
     - `Score`: The score given to this reading, as a float.
-    - `Status`: The current status of the reading. Possible values are `FINISHED`, `NOT FINISHED`, or `IN PROGRESS`.
+    - `Status`: The current status of the reading. Possible values are `FINISHED`, `NOT FINISHED`, `NEXT` or `IN PROGRESS`.
     - `Notes`: Optional notes about this work (e.g., thoughts).
 
 ## Showcase
