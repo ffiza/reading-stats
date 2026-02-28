@@ -1,17 +1,17 @@
-SHELL := powershell.exe
-.SHELLFLAGS := -NoProfile -Command
+SHELL := /bin/bash
+.SHELLFLAGS := -c
 
-.PHONY: all update-repo
+.PHONY: all update-repo create-plots
 
 all: update-repo
 
 create-plots:
-	python .\src\authors.py
-	python .\src\works.py
+	python ./src/authors.py
+	python ./src/works.py
 
 update-repo:
-	python .\src\authors.py
-	python .\src\works.py
+	python ./src/authors.py
+	python ./src/works.py
 	git add .
-	git commit -m "Make commit."
+	git commit -m "Automated commit."
 	git push
