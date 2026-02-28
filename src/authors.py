@@ -8,7 +8,7 @@ from colors import Colors
 from settings import Settings
 
 
-def export_top_authors(amount_to_export: int = 50) -> None:
+def export_top_authors() -> None:
     df = pd.read_csv("data/processed/read_history.csv")
     df = df[df["ReadStatus"].isin(["FINISHED", "NOT FINISHED"])]
     df["WeightedScore"] = df["ReadScore"] * df["PageCount"]
