@@ -62,7 +62,7 @@ def plot_most_read_authors(df: pd.DataFrame, n_authors: int = 20) -> None:
         fontsize=8, transform=ax.transAxes, color=Colors.DARKGRAY,
         fontname=Settings.FONTNAME, va="bottom", ha="left")
     ax.barh(df["AuthorName"], df["TotalPages"], label="Total Pages",
-            color="#88769e")
+            color=Colors.PURPLE)
     for label in ax.get_yticklabels():
         label.set_fontname(Settings.FONTNAME)
 
@@ -119,7 +119,7 @@ def plot_top_rated_authors(df: pd.DataFrame,
         -0.22, -0.01, s=" https://github.com/ffiza/reading-stats",
         fontsize=8, transform=ax.transAxes, color=Colors.DARKGRAY,
         fontname=Settings.FONTNAME, va="bottom", ha="left")
-    ax.barh(df["AuthorName"], df["WeightedReadScore"], color="#88769e")
+    ax.barh(df["AuthorName"], df["WeightedReadScore"], color=Colors.PURPLE)
     for label in ax.get_yticklabels():
         label.set_fontname(Settings.FONTNAME)
 
