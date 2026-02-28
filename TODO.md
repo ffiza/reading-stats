@@ -8,4 +8,6 @@
 # Analysis
 
 * [ ] Replicate figures from Story Board.
-* [ ] Update figure styles.
+* [o] Update figure styles.
+* [x] Create `data/results/recent_reads.csv`.
+* [x] Create `data/results/top_authors.csv`.
