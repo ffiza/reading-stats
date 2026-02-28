@@ -1,4 +1,4 @@
-CREATE VIEW V_READ_HISTORY AS
+CREATE VIEW V_CURRENTLY_READING AS
 SELECT
     A.Name                AS AuthorName,
     W.Name                AS WorkName,
@@ -7,13 +7,12 @@ SELECT
     W.NumberInSeries      AS NumberInSeries,
     R.Score               AS ReadScore,
     W.GoodreadsScore      AS GoodreadsScore,
-    R.StartDate           AS StartDate,
-    R.FinishDate          AS FinishDate,
-    R.Status              AS ReadStatus
+    R.StartDate           AS StartDate
 FROM READS R
 JOIN WORKS W
     ON R.WorkID = W.WorkID
 JOIN AUTHOR_WORK AW
     ON W.WorkID = AW.WorkID
 JOIN AUTHORS A
-    ON AW.AuthorID = A.AuthorID;
+    ON AW.AuthorID = A.AuthorID
+WHERE R.Status = 'IN PROGRESS';
