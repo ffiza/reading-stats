@@ -36,8 +36,8 @@ def plot_most_read_authors(df: pd.DataFrame, n_authors: int = 20) -> None:
     gs = fig.add_gridspec(ncols=1, nrows=1, hspace=0, wspace=0)
     ax = fig.add_subplot(gs[0, 0])
 
-    fig.patch.set_facecolor("#e9e9e9")
-    ax.set_facecolor("#e9e9e9")
+    fig.patch.set_facecolor(Colors.LIGHTGRAY)
+    ax.set_facecolor(Colors.LIGHTGRAY)
 
     ax.set_xlim(0, (int(max_pages / 1_000) + 3) * 1_000)
     ax.set_xticks([])
@@ -93,8 +93,8 @@ def plot_top_rated_authors(df: pd.DataFrame,
     gs = fig.add_gridspec(ncols=1, nrows=1, hspace=0, wspace=0)
     ax = fig.add_subplot(gs[0, 0])
 
-    fig.patch.set_facecolor("#e9e9e9")
-    ax.set_facecolor("#e9e9e9")
+    fig.patch.set_facecolor(Colors.LIGHTGRAY)
+    ax.set_facecolor(Colors.LIGHTGRAY)
 
     ax.set_xlim(0, 5)
     ax.set_xticks([])
