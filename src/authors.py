@@ -8,160 +8,138 @@ from colors import Colors
 from settings import Settings
 
 
-QUERY = """
-    SELECT
-        R.WorkID,
-        W.Name,
-        W.Series,
-        W.NumberInSeries,
-        W.PublishedOn,
-        W.PageCount,
-        R.StartDate,
-        R.FinishDate,
-        R.Score,
-        R.Status,
-        A.Country,
-        A.Name AS Author
-    FROM READS R
-    JOIN WORKS W ON R.WorkID = W.WorkID
-    JOIN AUTHOR_WORK AW ON R.WorkID = AW.WorkID
-    JOIN AUTHORS A ON AW.AuthorID = A.AuthorID
-    """
+def export_top_authors(amount_to_export: int = 50) -> None:
+    df = pd.read_csv("data/processed/read_history.csv")
+    df = df[df["ReadStatus"].isin(["FINISHED", "NOT FINISHED"])]
+    df["WeightedScore"] = df["ReadScore"] * df["PageCount"]
+
+    avg_scores = (
+        df.groupby(["AuthorID", "AuthorName"])
+        .agg(WeightedReadScore=("WeightedScore", "sum"),
+             TotalPages=("PageCount", "sum")))
+
+    avg_scores["WeightedReadScore"] = (
+        avg_scores["WeightedReadScore"] / avg_scores["TotalPages"])
+
+    avg_scores = (avg_scores.reset_index().sort_values("WeightedReadScore",
+                                                       ascending=False))
+
+    avg_scores.to_csv("data/results/top_authors.csv", index=False)
 
 
-class AuthorsAnalysis:
-    def __init__(self, database_path: str):
-        conn = sqlite3.connect(database_path)
-        self.authors = pd.read_sql("SELECT * FROM AUTHORS", conn)
-        self.df = pd.read_sql(QUERY, conn)
-        conn.close()
+def plot_most_read_authors(df: pd.DataFrame, n_authors: int = 20) -> None:
+    df = df.sort_values("TotalPages", ascending=False).reset_index(
+        drop=True).head(n_authors).sort_values("TotalPages", ascending=True)
+    max_pages = df["TotalPages"].max()
 
-        self.df["PublishedOn"] = self.df["PublishedOn"].astype(np.uint16)
-        self.df["StartDate"] = pd.to_datetime(
-            self.df["StartDate"], format="%Y-%m-%d", errors="coerce")
-        self.df["FinishDate"] = pd.to_datetime(
-            self.df["FinishDate"], format="%Y-%m-%d", errors="coerce")
-        self.df["Status"] = self.df["Status"].astype("category")
-
-    def get_unique_authors(self) -> List[str]:
-        return self.df["Author"].unique().tolist()
-
-    def get_authors_df(self) -> pd.DataFrame:
-        df_finished = self.df[self.df["Status"] == "FINISHED"]
-        grouped = df_finished.groupby("Author").apply(
-            lambda x: pd.Series({
-                "PagesRead": x["PageCount"].sum(),
-                "Country": x["Country"].iloc[0],
-                "WeightedAvgScore": np.average(x["Score"],
-                                               weights=x["PageCount"])
-            })
-        ).reset_index()
-        grouped = grouped.rename(columns={"Author": "AuthorName"})
-        grouped["PagesRead"] = grouped["PagesRead"].astype(int)
-        return grouped
-
-
-def plot_most_read_authors(df: pd.DataFrame) -> None:
-    N_WORKS: int = 20
-    SEPARATION: float = 0.5
-    df = df.sort_values("PagesRead", ascending=False).reset_index(drop=True)
-
-    fig = plt.figure(figsize=(1.8, 2.5))
+    fig = plt.figure(figsize=(7, 7))
     gs = fig.add_gridspec(ncols=1, nrows=1, hspace=0, wspace=0)
     ax = fig.add_subplot(gs[0, 0])
 
-    ax.set_ylim(-0.6, 29.1)
-    ax.set_yticks([])
-    ax.set_xlim(-0.25, 5)
+    fig.patch.set_facecolor("#e9e9e9")
+    ax.set_facecolor("#e9e9e9")
+
+    ax.set_xlim(0, (int(max_pages / 1_000) + 3) * 1_000)
     ax.set_xticks([])
-    plt.gca().invert_yaxis()
+    ax.tick_params(axis='y', length=0, labelsize=10)
 
     for spine in ["right", "left", "bottom", "top"]:
         ax.spines[spine].set_visible(False)
 
-    for i in range(N_WORKS):
-        ax.annotate(
-            str(i + 1), xy=(0.02, i + SEPARATION * i),
-            ha="center", va="center", color=Colors.DARKGRAY,
-            size=4, weight=800, zorder=21, fontname=Settings.FONTNAME)
-        name = df.loc[i]['AuthorName'].replace(' ', '\\ ').replace(
-            "-", r"\text{-}")
-        ax.text(x=0.2, y=i + SEPARATION * i,
-                s=f"$\\bf{{{name}}}$",
-                ha="left", va="bottom", color=Colors.DARKGRAY, size=3.5,
-                fontname='Segoe UI Emoji',)
-        pages_txt: str = str(df.loc[i]["PagesRead"]) + " pages read"
-        ax.text(x=0.2, y=i + SEPARATION * i, s=pages_txt,
-                style='italic', fontname=Settings.FONTNAME,
-                ha="left", va="top", color=Colors.DARKGRAY, size=3)
-
     plt.text(
-        0.02, 1.06, va="bottom", ha="left", fontsize=6,
+        -0.3, 1.01, va="bottom", ha="left", fontsize=14,
         transform=ax.transAxes, color=Colors.DARKGRAY,
-        s=f"Top 20 Most Read Authors",
-        fontname=Settings.FONTNAME, weight=800,
-    )
+        s="Top read authors: Which are the authors I've read the most?",
+        fontname=Settings.FONTNAME, weight=800)
+    plt.text(
+        -0.3, 0.98, va="bottom", ha="left", fontsize=10,
+        transform=ax.transAxes, color=Colors.DARKGRAY,
+        s="This shows the amount of pages I've read for each author.",
+        fontname=Settings.FONTNAME)
+    plt.text(
+        -0.3, -0.01, s="Source:", fontweight="bold", fontsize=8,
+        transform=ax.transAxes, color=Colors.DARKGRAY,
+        fontname=Settings.FONTNAME, va="bottom", ha="left")
+    plt.text(
+        -0.22, -0.01, s=" https://github.com/ffiza/reading-stats",
+        fontsize=8, transform=ax.transAxes, color=Colors.DARKGRAY,
+        fontname=Settings.FONTNAME, va="bottom", ha="left")
+    ax.barh(df["AuthorName"], df["TotalPages"], label="Total Pages",
+            color="#88769e")
+    for label in ax.get_yticklabels():
+        label.set_fontname(Settings.FONTNAME)
 
-    plt.subplots_adjust(left=0, right=1, bottom=0)
+    for i in range(n_authors):
+        add_text = " pages read" if i == n_authors - 1 else ""
+        pages_txt: str = str(df.loc[i]["TotalPages"]) + add_text
+        total_pages = df.loc[i]["TotalPages"]
+        ax.text(x=total_pages + 200, y=n_authors - i - 1, s=pages_txt,
+                style='italic', fontname=Settings.FONTNAME,
+                ha="left", va="center", color=Colors.DARKGRAY, size=10)
+
+    fig.tight_layout()
     fig.savefig("images/most_read_authors.png", dpi=1000)
 
 
-def plot_highest_rated_authors(df: pd.DataFrame) -> None:
-    N_WORKS: int = 20
-    SEPARATION: float = 0.5
-    MIN_PAGES_READ: int = 500
-    df = df.sort_values("WeightedAvgScore",
-                        ascending=False).reset_index(drop=True)
-    df_filtered = df[df["PagesRead"] >= MIN_PAGES_READ].copy().reset_index(
-        drop=True)
+def plot_top_rated_authors(df: pd.DataFrame,
+                           n_authors: int = 20,
+                           min_page_count: int = 500) -> None:
+    df = df[df["TotalPages"] >= min_page_count]
+    df = df.sort_values("WeightedReadScore", ascending=False).reset_index(
+        drop=True).head(n_authors).sort_values("WeightedReadScore",
+                                               ascending=True)
 
-    fig = plt.figure(figsize=(1.8, 1.8))
+    fig = plt.figure(figsize=(7, 7))
     gs = fig.add_gridspec(ncols=1, nrows=1, hspace=0, wspace=0)
     ax = fig.add_subplot(gs[0, 0])
 
-    fig = plt.figure(figsize=(1.8, 2.5))
-    gs = fig.add_gridspec(ncols=1, nrows=1, hspace=0, wspace=0)
-    ax = fig.add_subplot(gs[0, 0])
+    fig.patch.set_facecolor("#e9e9e9")
+    ax.set_facecolor("#e9e9e9")
 
-    ax.set_ylim(-0.6, 29.1)
-    ax.set_yticks([])
-    ax.set_xlim(-0.25, 5)
+    ax.set_xlim(0, 5)
     ax.set_xticks([])
-    plt.gca().invert_yaxis()
+    ax.tick_params(axis='y', length=0, labelsize=10)
 
     for spine in ["right", "left", "bottom", "top"]:
         ax.spines[spine].set_visible(False)
 
-    for i in range(N_WORKS):
-        ax.annotate(
-            str(i + 1), xy=(0.02, i + SEPARATION * i),
-            ha="center", va="center", color=Colors.DARKGRAY,
-            size=4, weight=800, zorder=21, fontname=Settings.FONTNAME)
-        name = df_filtered.loc[i]['AuthorName'].replace(' ', '\\ ').replace(
-            "-", r"\text{-}")
-        pages_txt: str = str(df_filtered.loc[i]["PagesRead"]) + " pages read"
-        ax.text(x=0.2, y=i + SEPARATION * i,
-                s=f"$\\bf{{{name}}}$ ({pages_txt})",
-                ha="left", va="bottom", color=Colors.DARKGRAY, size=3.5,
-                fontname='Segoe UI Emoji',)
-        score_txt: str = "Score: " \
-            + str(int(df_filtered.loc[i]["WeightedAvgScore"] / 5 * 100))
-        ax.text(x=0.2, y=i + SEPARATION * i, s=score_txt,
-                style='italic', fontname=Settings.FONTNAME,
-                ha="left", va="top", color=Colors.DARKGRAY, size=3)
-
     plt.text(
-        0.02, 1.06, va="bottom", ha="left", fontsize=6,
+        -0.3, 1.01, va="bottom", ha="left", fontsize=14,
         transform=ax.transAxes, color=Colors.DARKGRAY,
-        s=f"Top 20 Highest Rated Authors",
-        fontname=Settings.FONTNAME, weight=800,
-    )
+        s="Highest rated authors: Which are the authors I like the most?",
+        fontname=Settings.FONTNAME, weight=800)
+    plt.text(
+        -0.3, 0.98, va="bottom", ha="left", fontsize=10,
+        transform=ax.transAxes, color=Colors.DARKGRAY,
+        s="This shows the page-weighted average score of authors with at least"
+          f" {min_page_count} pages read.",
+        fontname=Settings.FONTNAME)
+    plt.text(
+        -0.3, -0.01, s="Source:", fontweight="bold", fontsize=8,
+        transform=ax.transAxes, color=Colors.DARKGRAY,
+        fontname=Settings.FONTNAME, va="bottom", ha="left")
+    plt.text(
+        -0.22, -0.01, s=" https://github.com/ffiza/reading-stats",
+        fontsize=8, transform=ax.transAxes, color=Colors.DARKGRAY,
+        fontname=Settings.FONTNAME, va="bottom", ha="left")
+    ax.barh(df["AuthorName"], df["WeightedReadScore"], color="#88769e")
+    for label in ax.get_yticklabels():
+        label.set_fontname(Settings.FONTNAME)
 
-    plt.subplots_adjust(left=0, right=1, bottom=0)
+    for i in range(n_authors):
+        add_text = " rating score" if i == n_authors - 1 else ""
+        score_txt: str = f"{df.loc[i]['WeightedReadScore']:.2f}" + add_text
+        score = df.loc[i]["WeightedReadScore"]
+        ax.text(x=score + 0.05, y=n_authors - i - 1, s=score_txt,
+                style='italic', fontname=Settings.FONTNAME,
+                ha="left", va="center", color=Colors.DARKGRAY, size=10)
+
+    fig.tight_layout()
     fig.savefig("images/highest_rated_authors.png", dpi=1000)
 
 
 if __name__ == "__main__":
-    a = AuthorsAnalysis(Settings.DATABASE_PATH)
-    plot_most_read_authors(df=a.get_authors_df())
-    plot_highest_rated_authors(df=a.get_authors_df())
+    export_top_authors()
+    df = pd.read_csv("data/results/top_authors.csv")
+    plot_most_read_authors(df)
+    plot_top_rated_authors(df, min_page_count=1000)
