@@ -1,18 +1,12 @@
 SHELL := /bin/bash
 .SHELLFLAGS := -c
 
-.PHONY: all update-repo create-plots
+.PHONY: all update
 
-all: update-repo
+all: update
 
-create-plots:
+update:
 	python ./src/read_history.py
 	python ./src/authors.py
 	python ./src/works.py
-
-update-repo:
-	python ./src/authors.py
-	python ./src/works.py
-	git add .
-	git commit -m "Automated commit."
-	git push
+	python ./src/to_read_next.py

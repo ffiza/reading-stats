@@ -103,3 +103,10 @@ The database consists of four tables, as described below. Missing values are rep
     - Non-Fiction: Writing
 - Play
 - Poetry
+
+## To-Read Next
+
+| AuthorName                  | WorkName           | WorkType   | Series       |   NumberInSeries |   GoodreadsScore |
+|:----------------------------|:-------------------|:-----------|:-------------|-----------------:|-----------------:|
+| Stephen King & Peter Straub | Black House        | Novel      | The Talisman |                2 |             4.03 |
+| Robert A. Heinlein          | The Puppet Masters | Novel      | nan          |              nan |             3.88 |
