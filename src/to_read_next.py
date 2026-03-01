@@ -25,6 +25,7 @@ def get_to_read_next_in_markdown(database_path: str) -> str:
         "NumberInSeries", "GoodreadsScore"]]
     df_grouped = df_grouped.sort_values("GoodreadsScore", ascending=False)
     text = df_grouped.to_markdown(index=False, buf=None)
+    text = text.replace("nan", "   ")
     return text
 
 
