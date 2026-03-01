@@ -69,7 +69,7 @@ def plot_works_score_scatter(df: pd.DataFrame) -> None:
     plt.text(
         -0.05, 1.14, va="bottom", ha="left", fontsize=14,
         transform=ax.transAxes, color=Colors.DARKGRAY,
-        s=f"Score comparison: How do my score compare to Goodreads scores?",
+        s=f"Score comparison: How do my scores compare to Goodreads scores?",
         fontname=Settings.FONTNAME, weight=800)
     plt.text(
         -0.05, 1.09, va="bottom", ha="left", fontsize=10,
