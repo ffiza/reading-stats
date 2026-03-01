@@ -3,7 +3,7 @@
 * [x] Add `StartedOn`, `FinishedOn` and `Status` to `V_READ_HISTORY`.
 * [x] Change shell in Makefile to Bash.
 * [x] Update `README.md`.
-* [ ] `Queries` class?
+* [x] `Queries` class?
 
 # Analysis
 
