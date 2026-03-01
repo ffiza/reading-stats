@@ -1,4 +1,3 @@
-CREATE VIEW V_TO_READ_NEXT AS
 SELECT
     A.Name                AS AuthorName,
     W.Name                AS WorkName,
@@ -6,7 +5,7 @@ SELECT
     W.Series              AS Series,
     W.NumberInSeries      AS NumberInSeries,
     W.GoodreadsScore      AS GoodreadsScore,
-    R.Notes               AS Notes
+    W.WorkID              AS WorkID
 FROM READS R
 JOIN WORKS W
     ON R.WorkID = W.WorkID
