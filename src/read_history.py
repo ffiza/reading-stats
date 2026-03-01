@@ -2,12 +2,12 @@ import sqlite3
 import pandas as pd
 
 from settings import Settings
-from queries import Queries
 
 
 def export_read_history(database_path: str) -> None:
+    query = open("./sql/read_history.sql", "r").read()
     conn = sqlite3.connect(database_path)
-    df = pd.read_sql(Queries.READ_HISTORY, conn)
+    df = pd.read_sql(query, conn)
     conn.close()
     df.to_csv("data/processed/read_history.csv", index=False)
 
