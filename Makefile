@@ -10,3 +10,4 @@ update:
 	python ./src/authors.py
 	python ./src/works.py
 	python ./src/to_read_next.py
+	python ./src/stephen_king.py
