@@ -35,6 +35,49 @@ The database consists of four tables, as described below. Missing values are rep
     - `Status`: The current status of the reading. Possible values are `FINISHED`, `NOT FINISHED`, `NEXT` or `IN PROGRESS`.
     - `Notes`: Optional notes about this work (e.g., thoughts).
 
+```mermaid
+erDiagram
+    AUTHORS {
+        int AuthorID PK
+        string Name
+        string Country
+        date BirthDate
+        date DeathDate
+    }
+
+    WORKS {
+        int WorkID PK
+        string Name
+        string PublishedOn
+        string WorkType
+        string Genre
+        string Series
+        float NumberInSeries
+        int PageCount
+        float GoodreadsScore
+        string Notes
+    }
+
+    AUTHOR_WORK {
+        int AuthorID FK
+        int WorkID FK
+    }
+
+    READS {
+        int ReadID PK
+        int WorkID FK
+        date StartDate
+        date FinishDate
+        float Score
+        string Status
+        string Notes
+    }
+
+    AUTHORS ||--o{ AUTHOR_WORK : "written by"
+    WORKS ||--o{ AUTHOR_WORK : "written by"
+    WORKS ||--o{ READS : "read as"
+```
+
 ## Showcase
 
 <div align="center">
