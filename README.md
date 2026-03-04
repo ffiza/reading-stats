@@ -81,13 +81,7 @@ erDiagram
 ## Showcase
 
 <div align="center">
-    <img src="https://github.com/ffiza/reading-stats/blob/main/images/most_read_authors.png?raw=true" width="800">
-</div>
-
----
-
-<div align="center">
-    <img src="https://github.com/ffiza/reading-stats/blob/main/images/highest_rated_authors.png?raw=true" width="800">
+    <img src="https://github.com/ffiza/reading-stats/blob/main/images/top_rated_most_read.png?raw=true" width="800">
 </div>
 
 ---
