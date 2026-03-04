@@ -108,7 +108,7 @@ def plot_top_rated_most_read_scatter(df: pd.DataFrame) -> None:
                 zorder=25)
 
     fig.tight_layout()
-    ax.set_position((0.05, 0.12, 0.75, 0.7))
+    ax.set_position((0.05, 0.12, 0.66, 0.7))
     fig.savefig("images/top_rated_most_read.png", dpi=1000)
 
 
