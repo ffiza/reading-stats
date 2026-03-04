@@ -1,3 +1,6 @@
+from colors import Colors
+
+
 class Settings:
     DATABASE_PATH = "data/raw/books.db"
     FONTNAME = "Segoe UI"
@@ -12,4 +15,17 @@ class Settings:
         "Graphic Novel": "Graphic Novels",
         "Anthology": "Anthologies",
         "Poetry": "Poems",
+    }
+
+    COLOR_MAPPING = {
+        "Novel": Colors.BLUE,
+        "Short Story": Colors.GREEN,
+        "Novella": Colors.ORANGE,
+        "Novelette": Colors.PURPLE,
+    }
+    WORK_TYPE_SYMBOLS = {
+        "Novel": "o",
+        "Short Story": "s",
+        "Novella": "^",
+        "Novelette": "D",
     }
