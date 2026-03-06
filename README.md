@@ -90,6 +90,12 @@ erDiagram
     <img src="https://github.com/ffiza/reading-stats/blob/main/images/work_score_scatter.png?raw=true" width="800">
 </div>
 
+---
+
+<div align="center">
+    <img src="https://github.com/ffiza/reading-stats/blob/main/images/genres_scatter.png?raw=true" width="800">
+</div>
+
 ## Genres
 
 - Fiction: Adventure
