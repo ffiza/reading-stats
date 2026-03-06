@@ -8,7 +8,11 @@ from reading_stats.export.genres import export_genres_stats
 GENRES_TO_HIGHLIGHT = [
     "Fiction: Science Fiction",
     "Fiction: Horror",
-    "Fiction: Science Fiction: Alternative History"
+    "Fiction: Horror: Cosmic",
+    "Fiction: Fantasy: Grimdark",
+    "Fiction: Science Fiction: Cyberpunk",
+    "Fiction: Horror: Folk",
+    "Fiction: Science Fiction: Apocalyptic"
 ]
 
 
