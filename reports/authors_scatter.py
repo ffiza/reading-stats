@@ -1,31 +1,11 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from reading_stats.config import CONFIG
+from reading_stats.colors import Colors
+from reading_stats.settings import Settings
+from reading_stats.export.authors import export_authors_stats
 
-from colors import Colors
-from settings import Settings
-
-
-def export_top_authors() -> None:
-    df = pd.read_csv("data/processed/read_history.csv")
-    df = df[df["ReadStatus"].isin(["FINISHED", "NOT FINISHED"])]
-    df["WeightedScore"] = df["ReadScore"] * df["PageCount"]
-
-    avg_scores = (
-        df.groupby(["AuthorID", "AuthorName"])
-        .agg(WeightedReadScore=("WeightedScore", "sum"),
-             TotalPages=("PageCount", "sum")))
-
-    avg_scores["WeightedReadScore"] = (
-        avg_scores["WeightedReadScore"] / avg_scores["TotalPages"])
-
-    avg_scores = (avg_scores.reset_index().sort_values("WeightedReadScore",
-                                                       ascending=False))
-
-    avg_scores.to_csv("data/results/top_authors.csv", index=False)
-
-
-def plot_top_rated_most_read_scatter(df: pd.DataFrame) -> None:
-    AUTHORS_TO_HIGHLIGHT = [
+AUTHORS_TO_HIGHLIGHT = [
         "Stephen King",
         "Dan Simmons",
         "George R. R. Martin",
@@ -35,6 +15,11 @@ def plot_top_rated_most_read_scatter(df: pd.DataFrame) -> None:
         "Margaret Atwood",
         "Harlan Ellison",
     ]
+
+
+def plot_top_rated_most_read_scatter(
+        df: pd.DataFrame,
+        authors_to_highlight: list = []) -> None:
 
     fig = plt.figure(figsize=(7, 5))
     gs = fig.add_gridspec(ncols=1, nrows=1, hspace=0, wspace=0)
@@ -91,28 +76,32 @@ def plot_top_rated_most_read_scatter(df: pd.DataFrame) -> None:
         fontsize=8, transform=ax.transAxes, color=Colors.DARKGRAY,
         fontname=Settings.FONTNAME, va="bottom", ha="left")
 
-    for author in AUTHORS_TO_HIGHLIGHT:
-        df_author = df[df["AuthorName"] == author]
-        if not df_author.empty:
-            ax.scatter(df_author["WeightedReadScore"], df_author["TotalPages"],
-                       s=10, label=author, zorder=20, linewidth=0.5,
-                       facecolor="none", edgecolor=Colors.DARKGRAY,)
-            ax.annotate(
-                author,
-                (df_author["WeightedReadScore"].values[0],
-                 df_author["TotalPages"].values[0]),
-                textcoords="data",
-                xytext=(5.1, df_author["TotalPages"].values[0]), ha='left',
-                va="center", arrowprops=dict(arrowstyle='-', lw=0.5,),
-                fontsize=8, fontname=Settings.FONTNAME, color=Colors.DARKGRAY,
-                zorder=25)
+    if len(authors_to_highlight) >= 1:
+        for author in authors_to_highlight:
+            df_author = df[df["AuthorName"] == author]
+            if not df_author.empty:
+                ax.scatter(
+                    df_author["WeightedReadScore"],
+                    df_author["TotalPages"],
+                    s=10, label=author, zorder=20, linewidth=0.5,
+                    facecolor="none", edgecolor=Colors.DARKGRAY,)
+                ax.annotate(
+                    author,
+                    (df_author["WeightedReadScore"].values[0],
+                     df_author["TotalPages"].values[0]),
+                    textcoords="data",
+                    xytext=(5.1, df_author["TotalPages"].values[0]),
+                    ha='left', va="center",
+                    arrowprops=dict(arrowstyle='-', lw=0.5,),
+                    fontsize=8, fontname=Settings.FONTNAME,
+                    color=Colors.DARKGRAY,
+                    zorder=25)
 
     fig.tight_layout()
     ax.set_position((0.05, 0.12, 0.66, 0.7))
-    fig.savefig("images/top_rated_most_read.png", dpi=1000)
+    fig.savefig(CONFIG["Authors"]["FigOutputFile"], dpi=1000)
 
 
 if __name__ == "__main__":
-    export_top_authors()
-    df = pd.read_csv("data/results/top_authors.csv")
-    plot_top_rated_most_read_scatter(df)
+    df = export_authors_stats()
+    plot_top_rated_most_read_scatter(df, AUTHORS_TO_HIGHLIGHT)

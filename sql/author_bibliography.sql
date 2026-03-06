@@ -21,5 +21,5 @@ JOIN AUTHOR_WORK AW
     ON W.WorkID = AW.WorkID
 JOIN AUTHORS A
     ON AW.AuthorID = A.AuthorID
-WHERE A.Name = "Stephen King"
+WHERE A.Name = ?
 ORDER BY A.Name, W.Name, R.StartDate;
