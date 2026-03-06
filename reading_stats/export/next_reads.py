@@ -1,12 +1,10 @@
 import sqlite3
 import pandas as pd
-
-from settings import Settings
-from utils import append_to_readme
+from reading_stats.config import CONFIG
 
 
-def get_to_read_next_in_markdown(database_path: str) -> str:
-    query = open("./sql/to_read_next.sql", "r").read()
+def get_next_reads_in_markdown(database_path: str) -> str:
+    query = open(CONFIG["NextReads"]["QueryPath"], "r").read()
     conn = sqlite3.connect(database_path)
     df = pd.read_sql(query, conn)
     conn.close()
@@ -30,5 +28,7 @@ def get_to_read_next_in_markdown(database_path: str) -> str:
 
 
 if __name__ == "__main__":
-    text = get_to_read_next_in_markdown(Settings.DATABASE_PATH)
-    append_to_readme(text_to_append=text, anchor="## To-Read Next")
+    text = get_next_reads_in_markdown(CONFIG["Database"]["FilePath"])
+    with open(CONFIG["NextReads"]["OutputFile"], "w", encoding="utf-8") as f:
+        f.write(text)
+        f.close()

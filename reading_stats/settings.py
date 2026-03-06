@@ -1,8 +1,7 @@
-from colors import Colors
+from reading_stats.colors import Colors
 
 
 class Settings:
-    DATABASE_PATH = "data/raw/books.db"
     FONTNAME = "Segoe UI"
     TITLE_FONTSIZE = 5.5
     TICK_LABELS_FONTSIZE = 3.5
@@ -17,7 +16,7 @@ class Settings:
         "Poetry": "Poems",
     }
 
-    COLOR_MAPPING = {
+    WORK_TYPE_COLOR_MAPPING = {
         "Novel": Colors.BLUE,
         "Short Story": Colors.GREEN,
         "Novella": Colors.ORANGE,
@@ -28,4 +27,19 @@ class Settings:
         "Short Story": "s",
         "Novella": "^",
         "Novelette": "D",
+    }
+
+    GENRE_COLOR_MAPPING = {
+        "Fiction: Fantasy": Colors.BLUE,
+        "Fiction: Horror": Colors.GREEN,
+        "Fiction: Science Fiction": Colors.ORANGE,
+        "Fiction: Historical": Colors.RED,
+        "Non-Fiction": Colors.PURPLE,
+    }
+    GENRE_SYMBOLS = {
+        "Fiction: Fantasy": "o",
+        "Fiction: Horror": "s",
+        "Fiction: Science Fiction": "^",
+        "Fiction: Historical": "v",
+        "Non-Fiction": "D",
     }
