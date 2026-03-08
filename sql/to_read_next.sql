@@ -6,11 +6,10 @@ SELECT
     W.NumberInSeries      AS NumberInSeries,
     W.GoodreadsScore      AS GoodreadsScore,
     W.WorkID              AS WorkID
-FROM READS R
+FROM NEXT_READS NR
 JOIN WORKS W
-    ON R.WorkID = W.WorkID
+    ON NR.WorkID = W.WorkID
 JOIN AUTHOR_WORK AW
     ON W.WorkID = AW.WorkID
 JOIN AUTHORS A
-    ON AW.AuthorID = A.AuthorID
-WHERE R.Status = 'NEXT';
+    ON AW.AuthorID = A.AuthorID;
