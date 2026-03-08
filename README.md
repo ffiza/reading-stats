@@ -4,6 +4,13 @@
 
 This repository explores data related to my personal reading habits. All data is stored in a relational database at `data/raw/books.db`. Scripts for querying, data processing, and plotting are located in the `src/` directory.
 
+* [Database](https://github.com/ffiza/reading-stats?tab=readme-ov-file#database)
+    * [Graph](https://github.com/ffiza/reading-stats?tab=readme-ov-file#graph)
+* [Showcase](https://github.com/ffiza/reading-stats?tab=readme-ov-file#showcase)
+* [Genres](https://github.com/ffiza/reading-stats?tab=readme-ov-file#genres)
+* [Next Reads](https://github.com/ffiza/reading-stats/blob/main/data/tables/next_reads.md)
+* [Stephen King Bibliography](https://github.com/ffiza/reading-stats/blob/main/data/tables/stephen_king.md)
+
 ## Database
 
 The database consists of the tables described below. Missing values are represented as `NULL`.
