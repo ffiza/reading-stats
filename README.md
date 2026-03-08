@@ -6,7 +6,7 @@ This repository explores data related to my personal reading habits. All data is
 
 ## Database
 
-The database consists of four tables, as described below. Missing values are represented as `NULL`.
+The database consists of the tables described below. Missing values are represented as `NULL`.
 
 - `AUTHORS` contains information about individual authors:
     - `AuthorID`: An integer serving as a unique identifier for the author.
@@ -34,6 +34,10 @@ The database consists of four tables, as described below. Missing values are rep
     - `Score`: The score given to this reading, as a float.
     - `Status`: The current status of the reading. Possible values are `FINISHED`, `NOT FINISHED`, or `IN PROGRESS`.
     - `Notes`: Optional notes about this work (e.g., thoughts).
+- `NEXT_READS` contains information about the works I want to read next:
+    - `WorkID`: The work being read, as in `WORKS`.
+
+### Graph
 
 ```mermaid
 erDiagram
@@ -73,9 +77,14 @@ erDiagram
         string Notes
     }
 
-    AUTHORS ||--o{ AUTHOR_WORK : "written by"
+    NEXT_READS {
+        int WorkID FK
+    }
+
+    AUTHORS ||--o{ AUTHOR_WORK : "writes"
     WORKS ||--o{ AUTHOR_WORK : "written by"
     WORKS ||--o{ READS : "read as"
+    WORKS ||--o{ NEXT_READS : "queued as"
 ```
 
 ## Showcase
