@@ -1,6 +1,6 @@
 # Database
 
-* [ ] Add a next table called `NEXT_READS` and remove the `NEXT` option in the `READS` table. `READS` should only contains finished and unfinished books, not books I want to read soon.
+* [x] Add a next table called `NEXT_READS` and remove the `NEXT` option in the `READS` table. `READS` should only contains finished and unfinished books, not books I want to read soon.
 
 # Codebase
 
