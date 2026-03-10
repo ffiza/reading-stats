@@ -3,7 +3,7 @@ SHELL := /bin/bash
 
 .PHONY: all update
 
-all: automatic-update
+all: full-update
 
 update:
 	python ./reading_stats/export/read_history.py
