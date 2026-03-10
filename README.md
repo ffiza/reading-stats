@@ -2,7 +2,7 @@
     <h1>Reading Stats</h1>
 </div>
 
-This repository explores data related to my personal reading habits. All data is stored in a relational database at `data/raw/books.db`. Scripts for querying, data processing, and plotting are located in the `src/` directory.
+This repository explores data related to my personal reading habits. All data is stored in a relational database at `data/raw/books.db`. Scripts for querying and data processing are located in the `reading_stats/` directory; scripts to create figures are located in `reports/`.
 
 * [Database](https://github.com/ffiza/reading-stats?tab=readme-ov-file#database)
     * [Graph](https://github.com/ffiza/reading-stats?tab=readme-ov-file#graph)
@@ -10,6 +10,7 @@ This repository explores data related to my personal reading habits. All data is
 * [Genres](https://github.com/ffiza/reading-stats?tab=readme-ov-file#genres)
 * [Next Reads](https://github.com/ffiza/reading-stats/blob/main/data/tables/next_reads.md)
 * [Stephen King Bibliography](https://github.com/ffiza/reading-stats/blob/main/data/tables/stephen_king.md)
+* [H. P. Lovecraft Bibliography](https://github.com/ffiza/reading-stats/blob/main/data/tables/h_p_lovecraft.md)
 
 ## Database
 
