@@ -1,6 +1,5 @@
 | AuthorName                  | WorkName                     | WorkType   | Series           |   NumberInSeries |   GoodreadsScore |
 |:----------------------------|:-----------------------------|:-----------|:-----------------|-----------------:|-----------------:|
-| Stephen King                | The Breathing Method         | Novella    |                  |                  |             4.35 |
 | Octavia E. Butler           | Parable of the Talents       | Novel      | Earthseed        |                2 |             4.31 |
 | Ronald Malfi                | December Park                | Novel      |                  |                  |             4.26 |
 | Octavia E. Butler           | Dawn                         | Novel      | Xenogenesis      |                1 |             4.16 |

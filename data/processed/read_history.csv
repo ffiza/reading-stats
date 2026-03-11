@@ -433,9 +433,9 @@ Kurt Vonnegut,334,Breakfast of Champions,Novel,,,1973,Fiction: Science Fiction,3
 Kurt Vonnegut,334,Slaughterhouse-Five,Novel,,,1969,Fiction: Science Fiction,275,4.3,4.1,768,,,FINISHED
 Kurt Vonnegut,334,The Sirens of Titan,Novel,,,1959,Fiction: Science Fiction,224,4.2,4.15,767,,,FINISHED
 L. Sprague de Camp,57,Preface to the Al-Azif,Non-Fiction,,,1973,Fiction: Horror: Cosmic,5,3.75,3.68,93,2024-12-21,2024-12-21,FINISHED
-L. Sprague de Camp,57,The City of Skulls,Novelette,Conan,,1967,Fiction: Fantasy: High,32,3.95,4.08,1510,,,FINISHED
-L. Sprague de Camp,57,The Hall of the Dead,Novelette,Conan,,1967,Fiction: Fantasy: High,26,3.95,4.08,1506,,,FINISHED
-L. Sprague de Camp,57,The Thing in the Crypt,Short Story,Conan,,1967,Fiction: Fantasy: High,17,3.95,4.08,1504,,,FINISHED
+L. Sprague de Camp,57,The City of Skulls,Novelette,Conan,0.0,1967,Fiction: Fantasy: High,32,3.95,4.08,1510,,,FINISHED
+L. Sprague de Camp,57,The Hall of the Dead,Novelette,Conan,0.0,1967,Fiction: Fantasy: High,26,3.95,4.08,1506,,,FINISHED
+L. Sprague de Camp,57,The Thing in the Crypt,Short Story,Conan,0.0,1967,Fiction: Fantasy: High,17,3.95,4.08,1504,,,FINISHED
 Laird Barron,690,The Croning,Novel,,,2012,Fiction: Horror: Cosmic,245,4.0,3.72,774,,,FINISHED
 Laird Barron,690,Vastation,Short Story,,,2010,Fiction: Horror: Cosmic,18,4.0,3.56,1431,2025-09-15,2025-09-16,FINISHED
 Larry Niven,649,Lucifer's Hammer,Novel,,,1977,Fiction: Science Fiction: Apocalyptic,629,4.0,4.0,679,,,FINISHED
@@ -447,9 +447,9 @@ Lester del Rey,477,Evensong,Short Story,,,1967,Fiction: Science Fiction,10,3.0,4
 Lewis Shiner,202,Mozart in Mirrorshades,Short Story,,,1985,Fiction: Science Fiction: Cyberpunk,16,4.0,3.95,793,,,FINISHED
 Lewis Shiner,202,Till Human Voices Wake Us,Short Story,,,1984,Fiction: Science Fiction: Cyberpunk,14,3.5,3.95,792,,,FINISHED
 Liliana Heker,487,La trastienda de la escritura,Non-Fiction,,,2019,Non-Fiction: Writing,272,4.5,4.18,794,,,FINISHED
-Lin Carter,787,The City of Skulls,Novelette,Conan,,1967,Fiction: Fantasy: High,32,3.95,4.08,1510,,,FINISHED
-Lin Carter,787,The Hand of Nergal,Novelette,Conan,,1967,Fiction: Fantasy: High,27,3.95,4.08,1509,,,FINISHED
-Lin Carter,787,The Thing in the Crypt,Short Story,Conan,,1967,Fiction: Fantasy: High,17,3.95,4.08,1504,,,FINISHED
+Lin Carter,787,The City of Skulls,Novelette,Conan,0.0,1967,Fiction: Fantasy: High,32,3.95,4.08,1510,,,FINISHED
+Lin Carter,787,The Hand of Nergal,Novelette,Conan,0.0,1967,Fiction: Fantasy: High,27,3.95,4.08,1509,,,FINISHED
+Lin Carter,787,The Thing in the Crypt,Short Story,Conan,0.0,1967,Fiction: Fantasy: High,17,3.95,4.08,1504,,,FINISHED
 Lincoln Child,232,Relic,Novel,Aloysius Pendergast,1.0,1995,Fiction: Crime,480,3.7,4.05,399,,,FINISHED
 Ma Boyong,406,The First Emperor's Games,Short Story,,,2016,Fiction: Science Fiction,12,3.5,3.85,802,,,FINISHED
 Manly Wade Wellman,187,The Terrible Parchment,Short Story,,,1937,Fiction: Horror: Cosmic,6,4.0,4.18,806,,,FINISHED
@@ -592,13 +592,25 @@ Robert A. W. Lowndes,52,The Mantle of Graag,Short Story,,,1996,Fiction: Horror: 
 Robert Bloch,580,A Toy for Juliette,Short Story,,,1967,Fiction: Science Fiction,15,4.0,4.17,1090,,,FINISHED
 Robert Bloch,580,Psycho,Novel,Psycho,1.0,1959,Fiction: Horror,208,4.0,4.12,1091,,,FINISHED
 Robert Bloch,580,Strange Eons,Novel,,,1978,Fiction: Horror: Cosmic,249,3.25,3.62,1092,,,FINISHED
-Robert E. Howard,42,Rogues in the House,Novelette,Conan,,1934,Fiction: Fantasy: High,31,3.95,4.08,1508,,,FINISHED
-Robert E. Howard,42,The God in the Bowl,Short Story,Conan,,1952,Fiction: Fantasy: High,24,3.95,4.08,1507,,,FINISHED
-Robert E. Howard,42,The Hall of the Dead,Novelette,Conan,,1967,Fiction: Fantasy: High,26,3.95,4.08,1506,,,FINISHED
-Robert E. Howard,42,The Hand of Nergal,Novelette,Conan,,1967,Fiction: Fantasy: High,27,3.95,4.08,1509,,,FINISHED
-Robert E. Howard,42,"The Hyborian Age, Part 1",Short Story,Conan,,1967,Fiction: Fantasy: High,13,3.95,4.08,1503,,,FINISHED
-Robert E. Howard,42,The Savage Tales of Solomon Kane,Novel,,,2004,Fiction: Fantasy: Low,414,4.0,4.06,1099,,,FINISHED
-Robert E. Howard,42,The Tower of the Elephant,Novelette,Conan,,1933,Fiction: Fantasy: High,30,3.95,4.08,1505,,,FINISHED
+Robert E. Howard,42,Death's Black Riders,Short Story,Solomon Kane,0.0,1968,Fiction: Fantasy: High,4,4.02,4.04,1516,,,FINISHED
+Robert E. Howard,42,Hawk of Basti,Short Story,Solomon Kane,0.0,1968,Fiction: Fantasy: High,15,4.02,4.04,1520,,,FINISHED
+Robert E. Howard,42,Rattle of Bones,Short Story,Solomon Kane,0.0,1929,Fiction: Fantasy: High,12,4.02,4.04,1514,,,FINISHED
+Robert E. Howard,42,Red Shadows,Novelette,Solomon Kane,0.0,1928,Fiction: Fantasy: High,44,4.02,4.04,1513,,,FINISHED
+Robert E. Howard,42,Rogues in the House,Novelette,Conan,0.0,1934,Fiction: Fantasy: High,31,3.95,4.08,1508,,,FINISHED
+Robert E. Howard,42,Skulls in the Stars,Short Story,Solomon Kane,0.0,1929,Fiction: Fantasy: High,18,4.02,4.04,1511,,,FINISHED
+Robert E. Howard,42,The Blue Flame of Vengeance,Novelette,Solomon Kane,0.0,1968,Fiction: Fantasy: High,46,4.02,4.04,1518,,,FINISHED
+Robert E. Howard,42,The Castle of the Devil,Short Story,Solomon Kane,0.0,1968,Fiction: Fantasy: High,8,4.02,4.04,1515,,,FINISHED
+Robert E. Howard,42,The Children of Asshur,Novelette,Solomon Kane,0.0,1968,Fiction: Fantasy: High,32,4.02,4.04,1523,,,FINISHED
+Robert E. Howard,42,The Footfalls Within,Short Story,Solomon Kane,0.0,1931,Fiction: Fantasy: High,24,4.02,4.04,1522,,,FINISHED
+Robert E. Howard,42,The God in the Bowl,Short Story,Conan,0.0,1952,Fiction: Fantasy: High,24,3.95,4.08,1507,,,FINISHED
+Robert E. Howard,42,The Hall of the Dead,Novelette,Conan,0.0,1967,Fiction: Fantasy: High,26,3.95,4.08,1506,,,FINISHED
+Robert E. Howard,42,The Hand of Nergal,Novelette,Conan,0.0,1967,Fiction: Fantasy: High,27,3.95,4.08,1509,,,FINISHED
+Robert E. Howard,42,The Hills of the Dead,Novelette,Solomon Kane,0.0,1930,Fiction: Fantasy: High,31,4.02,4.04,1519,,,FINISHED
+Robert E. Howard,42,"The Hyborian Age, Part 1",Short Story,Conan,0.0,1967,Fiction: Fantasy: High,13,3.95,4.08,1503,,,FINISHED
+Robert E. Howard,42,The Moon of Skulls,Novella,Solomon Kane,0.0,1930,Fiction: Fantasy: High,74,4.02,4.04,1517,,,FINISHED
+Robert E. Howard,42,The Right Hand of Doom,Short Story,Solomon Kane,0.0,1968,Fiction: Fantasy: High,10,4.02,4.04,1512,,,FINISHED
+Robert E. Howard,42,The Tower of the Elephant,Novelette,Conan,0.0,1933,Fiction: Fantasy: High,30,3.95,4.08,1505,,,FINISHED
+Robert E. Howard,42,Wings in the Night,Novelette,Solomon Kane,0.0,1932,Fiction: Fantasy: High,50,4.02,4.04,1521,,,FINISHED
 Robert F. Young,686,Goddess in Granite,Novelette,,,1957,Fiction: Science Fiction,13,3.0,3.77,1100,,,FINISHED
 Robert Graves,513,"I, Claudius",Novel,Claudius,1.0,1934,Fiction: Historical,468,4.0,4.24,1101,,,FINISHED
 Robert Graysmith,682,Zodiac: The Shocking Hugo Award Story of the Hunt for the Nation's Most Elusive Serial Killer,Non-Fiction,,,1986,Non-Fiction: Crime,307,4.0,3.91,1102,,,FINISHED
