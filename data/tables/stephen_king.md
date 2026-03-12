@@ -53,7 +53,7 @@
 | Survivor Type                             | Short Story |                |         |          1982 |          18 |           |             3.97 |              |              |
 | The Gunslinger                            | Novel       | The Dark Tower |       1 |          1982 |         231 |      4.5  |             3.92 |              | FINISHED     |
 | The Body                                  | Novel       |                |         |          1982 |         154 |      4.5  |             4.35 |              | FINISHED     |
-| The Breathing Method                      | Novella     |                |         |          1982 |          66 |           |             4.35 |              | IN PROGRESS  |
+| The Breathing Method                      | Novella     |                |         |          1982 |          66 |      3.17 |             4.35 | 2025-03-12   | FINISHED     |
 | Pet Sematary                              | Novel       |                |         |          1983 |         580 |      4.7  |             4.06 |              | FINISHED     |
 | Christine                                 | Novel       |                |         |          1983 |         411 |      3.5  |             3.84 |              | NOT FINISHED |
 | Cycle of the Werewolf                     | Novella     |                |         |          1983 |         128 |           |             3.67 |              |              |
