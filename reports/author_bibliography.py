@@ -120,7 +120,7 @@ def plot_data(data: pd.DataFrame) -> None:
     fig.tight_layout()
     ax.set_position((0.05, 0.12, 0.9, 0.7))
     filename = data.author_name.replace(".", "").replace(" ", "_").lower() \
-        + "_bibilography.png"
+        + "_bibliography.png"
     fig.savefig(f"images/{filename}", dpi=1000)
 
 
