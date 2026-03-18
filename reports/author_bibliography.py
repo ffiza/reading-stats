@@ -121,7 +121,7 @@ def plot_data(data: pd.DataFrame) -> None:
     ax.set_position((0.05, 0.12, 0.9, 0.7))
     filename = data.author_name.replace(".", "").replace(" ", "_").lower() \
         + "_bibilography.png"
-    fig.savefig(f"images/{filename}.png", dpi=1000)
+    fig.savefig(f"images/{filename}", dpi=1000)
 
 
 if __name__ == "__main__":
