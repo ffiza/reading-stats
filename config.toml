@@ -1,0 +1,27 @@
+[database]
+file_path = "data/raw/books.db"
+
+[authors]
+data_output_file = "data/results/authors_stats.csv"
+fig_output_file = "images/top_rated_most_read.png"
+
+[author_bibliography]
+query_path = "sql/author_bibliography.sql"
+output_dir = "data/tables/"
+
+[works]
+data_output_file = "data/results/works_stats.csv"
+fig_output_file = "images/work_score_scatter.png"
+
+[read_history]
+data_file = "data/processed/read_history.csv"
+query_path = "sql/read_history.sql"
+recent_reads_file = "data/results/recent_reads.csv"
+
+[next_reads]
+query_path = "sql/to_read_next.sql"
+output_file = "data/tables/next_reads.md"
+
+[genres]
+data_output_file = "data/results/genres_stats.csv"
+fig_output_file = "images/genres_scatter.png"

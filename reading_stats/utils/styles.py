@@ -1,7 +1,7 @@
-from reading_stats.colors import Colors
+from reading_stats.utils.colors import Colors
 
 
-class Settings:
+class Styles:
     FONTNAME = "Segoe UI"
     TITLE_FONTSIZE = 5.5
     TICK_LABELS_FONTSIZE = 3.5

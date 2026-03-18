@@ -7,16 +7,11 @@ all: full-update
 
 update:
 	@echo "Updating reports..."
-	@python ./reading_stats/export/read_history.py
-	@python ./reading_stats/export/authors.py
-	@python ./reading_stats/export/works.py
-	@python ./reading_stats/export/genres.py
-	@python ./reading_stats/export/next_reads.py
-	@python ./reading_stats/export/export_author_bibliography.py --author "Stephen King"
-	@python ./reports/authors_scatter.py
-	@python ./reports/genres_scatter.py
-	@python ./reports/works_scatter.py
-	@python ./reports/author_bibliography.py --author "Stephen King"
+	@python -m reading_stats.reports.authors_scatter
+	@python -m reading_stats.reports.genres_scatter
+	@python -m reading_stats.reports.works_scatter
+	@python -m reading_stats.reports.next_reads
+	@python -m reading_stats.reports.author_bibliography --author "Stephen King" --table
 	@echo "Reports updated."
 
 full-update:

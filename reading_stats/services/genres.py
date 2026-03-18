@@ -1,9 +1,9 @@
 import pandas as pd
-from reading_stats.config import CONFIG
+from reading_stats.db import queries
 
 
-def export_genres_stats(save_csv: bool = False) -> pd.DataFrame:
-    df = pd.read_csv(CONFIG["ReadHistory"]["ReadHistoryDataFile"])
+def get_genre_stats() -> pd.DataFrame:
+    df = queries.get_read_history()
     df = df[df["ReadStatus"].isin(["FINISHED", "NOT FINISHED"])]
     df["WeightedScore"] = df["ReadScore"] * df["PageCount"]
 
@@ -17,7 +17,4 @@ def export_genres_stats(save_csv: bool = False) -> pd.DataFrame:
     avg_scores = (avg_scores.reset_index().sort_values("AverageScore",
                                                        ascending=False))
 
-    if save_csv:
-        avg_scores.to_csv(CONFIG["Genres"]["DataOutputFile"],
-                          float_format="%.3f", index=False)
     return avg_scores
