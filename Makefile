@@ -13,10 +13,10 @@ update:
 	@python ./reading_stats/export/genres.py
 	@python ./reading_stats/export/next_reads.py
 	@python ./reading_stats/export/export_author_bibliography.py --author "Stephen King"
-	@python ./reading_stats/export/export_author_bibliography.py --author "H. P. Lovecraft"
 	@python ./reports/authors_scatter.py
 	@python ./reports/genres_scatter.py
 	@python ./reports/works_scatter.py
+	@python ./reports/author_bibliography.py --author "Stephen King"
 	@echo "Reports updated."
 
 full-update:
