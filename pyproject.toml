@@ -13,7 +13,11 @@ dependencies = [
     "pandas>=3.0",
     "pillow>=12.1",
     "tabulate>=0.9",
+    "typer>=0.12",
 ]
+
+[project.scripts]
+reading-stats = "reading_stats.cli.main:app"
 
 [project.optional-dependencies]
 dev = [

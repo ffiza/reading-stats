@@ -7,11 +7,7 @@ all: full-update
 
 update:
 	@echo "Updating reports..."
-	@python -m reading_stats.reports.authors_scatter
-	@python -m reading_stats.reports.genres_scatter
-	@python -m reading_stats.reports.works_scatter
-	@python -m reading_stats.reports.next_reads
-	@python -m reading_stats.reports.author_bibliography --author "Stephen King" --table
+	@reading-stats all
 	@echo "Reports updated."
 
 full-update:
