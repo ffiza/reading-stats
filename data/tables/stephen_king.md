@@ -89,7 +89,7 @@
 | The Stand: The Complete and Uncut Edition | Novel       |                |                  |          1990 |        1348 |             |             4.35 |              |              |
 | Secret Window, Secret Garden              | Novella     |                |                  |          1990 |         130 | 4.15        |             3.95 |              | FINISHED     |
 | The Langoliers                            | Novella     |                |                  |          1990 |         206 | 3.9         |             3.95 |              | FINISHED     |
-| The Library Policeman                     | Novella     |                |                  |          1990 |         198 |             |             3.95 |              | IN PROGRESS  |
+| The Library Policeman                     | Novella     |                |                  |          1990 |         198 | 3.17        |             3.95 | 2026-03-21   | FINISHED     |
 | Head Down                                 | Non-Fiction |                |                  |          1990 |          28 |             |             3.95 |              |              |
 | Needful Things                            | Novel       |                |                  |          1991 |         790 | 3.5         |             3.97 |              | NOT FINISHED |
 | The Waste Lands                           | Novel       | The Dark Tower | 3.0              |          1991 |         590 | 4.83        |             4.25 |              | FINISHED     |
