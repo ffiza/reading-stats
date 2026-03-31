@@ -2,7 +2,6 @@
 |:----------------------------|:-----------------------------|:-----------|:-----------------|-----------------:|-----------------:|
 | Adam Nevill                 | All the Fiends of Hell       | Novel      | nan              |              nan |             3.87 |
 | Dan Simmons                 | Song of Kali                 | Novel      | nan              |              nan |             3.61 |
-| Justin Cronin               | The Passage                  | Novel      | The Passage      |                1 |             4.04 |
 | Laird Barron                | Black Mountain               | Novel      | Isaiah Coleridge |                2 |             3.98 |
 | Octavia E. Butler           | Dawn                         | Novel      | Xenogenesis      |                1 |             4.16 |
 | Octavia E. Butler           | Parable of the Talents       | Novel      | Earthseed        |                2 |             4.31 |
