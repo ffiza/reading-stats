@@ -85,7 +85,7 @@
 | Rainy Season                              | Short Story |                |                  |          1989 |          18 |             |             3.95 |              |              |
 | Home Delivery                             | Novelette   |                |                  |          1989 |          22 |             |             3.95 |              |              |
 | The Moving Finger                         | Novelette   |                |                  |          1990 |          28 |             |             3.95 |              |              |
-| The Sun Dog                               | Novella     |                |                  |          1990 |         150 |             |             3.95 |              | IN PROGRESS  |
+| The Sun Dog                               | Novella     |                |                  |          1990 |         150 | 3.6         |             3.95 | 2026-04-26   | FINISHED     |
 | The Stand: The Complete and Uncut Edition | Novel       |                |                  |          1990 |        1348 |             |             4.35 |              |              |
 | Secret Window, Secret Garden              | Novella     |                |                  |          1990 |         130 | 4.15        |             3.95 |              | FINISHED     |
 | The Langoliers                            | Novella     |                |                  |          1990 |         206 | 3.9         |             3.95 |              | FINISHED     |
