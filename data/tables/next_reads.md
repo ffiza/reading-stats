@@ -6,6 +6,7 @@
 | Laird Barron                | Black Mountain                 | Novel      | Isaiah Coleridge                    |                2 |             3.98 |
 | Octavia E. Butler           | Dawn                           | Novel      | Xenogenesis                         |                1 |             4.16 |
 | Octavia E. Butler           | Parable of the Talents         | Novel      | Earthseed                           |                2 |             4.31 |
+| R. A. Salvatore             | Passage to Dawn                | Novel      | Legacy of the Drow                  |                4 |             4.11 |
 | R. Scott Bakker             | The Darkness That Comes Before | Novel      | The Prince of Nothing               |                1 |             3.82 |
 | Robert A. Heinlein          | The Moon is a Harsh Mistress   | Novel      | nan                                 |              nan |             4.16 |
 | Robert A. Heinlein          | The Puppet Masters             | Novel      | nan                                 |              nan |             3.88 |
