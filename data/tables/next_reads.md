@@ -2,6 +2,7 @@
 |:----------------------------|:-------------------------------|:-------|:------------------------------------|:-------------------|------------------:|
 | Adam Nevill                 | All the Fiends of Hell         | Novel  |                                     |                    |              3.87 |
 | Dan Simmons                 | Song of Kali                   | Novel  |                                     |                    |              3.61 |
+| Gene Wolfe                  | The Shadow of the Torturer     | Novel  | The Book of the New Sun             | 1.0                |              3.83 |
 | Glen Cook                   | The Black Company              | Novel  | The Chronicles of the Black Company | 1.0                |              3.93 |
 | Laird Barron                | Black Mountain                 | Novel  | Isaiah Coleridge                    | 2.0                |              3.98 |
 | Octavia E. Butler           | Dawn                           | Novel  | Xenogenesis                         | 1.0                |              4.16 |
