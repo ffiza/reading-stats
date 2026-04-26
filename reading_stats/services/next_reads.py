@@ -18,5 +18,15 @@ def get_next_reads_for_table() -> pd.DataFrame:
             "NumberInSeries": "first",
             "GoodreadsScore": "first",
         })
-        .reset_index(drop=True).sort_values(by="AuthorName").fillna("")
+        .reset_index(drop=True)
+        .sort_values(by="AuthorName")
+        .fillna("")
+        .rename(
+            columns={
+                "AuthorName": "Author",
+                "WorkName": "Title",
+                "WorkType": "Type",
+                "NumberInSeries": "Number in series",
+            }
+        )
     )
