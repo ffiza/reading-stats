@@ -13,7 +13,22 @@ def get_author_bibliography_for_table(author: str) -> pd.DataFrame:
     cols_to_drop = ["AuthorName", "AuthorID", "Genre", "WorkID", "StartDate"]
     df = df.drop(columns=cols_to_drop)
     df = df.fillna("")
-    return df.sort_values(by="PublishedOn", ascending=True)
+    return (
+        df.sort_values(by="PublishedOn", ascending=True)
+        .rename(
+            columns={
+                "WorkName": "Title",
+                "WorkType": "Type",
+                "Series": "Series",
+                "NumberInSeries": "Number in series",
+                "PublishedOn": "Published on",
+                "PageCount": "Page count",
+                "ReadStatus": "Read status",
+                "MyScore": "My score",
+                "GoodreadsScore": "Goodreads score",
+                "LastReadOn": "Last read on",
+            }
+        ))
 
 
 def _compute_totals(df: pd.DataFrame) -> pd.DataFrame:
