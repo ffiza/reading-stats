@@ -27,6 +27,7 @@ def get_next_reads_for_table() -> pd.DataFrame:
                 "WorkName": "Title",
                 "WorkType": "Type",
                 "NumberInSeries": "Number in series",
+                "GoodreadsScore": "Goodreads score",
             }
         )
     )
